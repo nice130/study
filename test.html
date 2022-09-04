@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta chareset="utf-8">
+        <title>끝말잇기</title>
+    </head>
+
+    <body>
+        <div><span id="order"></div>
+        <button id ="enter" onclick="next()">입력</button>
+        <button id ="next" onclick="next2()" style="display:none;">다음</button>
+        <script>
+            var word;
+            const nextLan = document.createElement("tr");
+            let num = 1;
+            const number = prompt('몇 명이 참가하나요?');
+            for(let i=1;i<=number;i++){
+                const temp = document.createElement("div");
+                temp.innerHTML = '<div><span>'+i+'</span>번째 참가자</div>'
+                +'<input id = "player'+i+'" type = "text">';
+            document.querySelector("#order").append(temp);
+            }
+            function next(){
+                
+                const lan = prompt('첫번째 제시어');  
+                nextLan.innerHTML = '<td>'+lan+'=><td>'+'<input id =go type="text">';
+                if(lan==null|| lan =='' ){
+                    alert('제시어를 입력 해주세요');
+                    return;
+                }else{
+                    document.querySelector("#order").append(nextLan); 
+                    const btn1 = document.getElementById('enter');
+                    const btn2 = document.getElementById('next');
+                    btn1.style.display = 'none';
+                    btn2.style.display = 'block';
+                }
+                word = Array.from(lan)[Array.from(lan).length-1];
+                console.log(word);          
+            }
+            function next2(){
+                // const lan2 = null;
+                const word2 = Array.from(lan2)[0];
+                for(let i=0;i<num;i++){
+                    lan2 = document.getElementById('go'+i).value;
+                    console.log('lan2==>'+lan2);
+                }
+                
+                if(word==null){
+                    word=Array.from(lan2)[Array.from(lan2).length-1];
+                }
+                console.log('첫단어 마지막=>'+word+'////두번째단어 첫번째=>'+word2);
+                if(word==word2){
+                    console.log('첫단어 마지막=>'+word+'////두번째단어 첫번째=>'+word2);
+                    document.querySelector("#order").append(nextLan); 
+                    nextLan.innerHTML = '<td>'+lan2+'=><td>'+'<input id =go'+num+' type="text">';
+                    word=null;
+                    num++;
+                }else{
+                    alert('땡');
+                }
+            }
+        </script>
+    </body>
+    
+</html>

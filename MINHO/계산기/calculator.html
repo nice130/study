@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>calculator-SharryHong</title>
+  <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="input-box">
+    <div class="displayBox"></div>
+    <input id="numberInput" type="text" placeholder="0">
+  </div>
+  <table>
+    <tbody>
+      <tr>
+        <td colspan="3" class="col3"><button id="clearBtn">AC</button></td>
+        <td><button id="divide" class="operator" value="/">/</button></td>
+      </tr>
+      <tr>
+        <td><button class="number">7</button></td>
+        <td><button class="number">8</button></td>
+        <td><button class="number">9</button></td>
+        <td><button id="multiply" class="operator" value="*">x</button></td>
+      </tr>
+      <tr>
+        <td><button class="number">4</button></td>
+        <td><button class="number">5</button></td>
+        <td><button class="number">6</button></td>
+        <td><button id="minus" class="operator" value="-">-</button></td>
+      </tr>
+      <tr>
+        <td><button class="number">1</button></td>
+        <td><button class="number">2</button></td>
+        <td><button class="number">3</button></td>
+        <td><button id="plus" class="operator" value="+">+</button></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="col2"><button class="number">0</button></td>
+        <td><button id="comma" class="number">.</button></td>
+        <td><button id="equal" class="operator" value="=">=</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<script src="calculator.js"></script>
+</body>
+</html>

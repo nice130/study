@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>끝말잇기</title>
+</head>
+
+<body>
+  <div><span id="totalPlayers"></span>명 참가</div>
+  <div><span id="nthPlayer"></span>번째 참가자</div>
+  <div>제시어: <span id="word"></span></div>
+  <input id="inputWord" type="text">
+  <button id="check">입력</button>
+  <script>
+    const log = console.log;
+    const people = parseInt(prompt('참가 인원이 몇 명인가요?'));
+    const $joinPeople = document.querySelector('#totalPlayers');
+    const $nthPlayer = document.querySelector('#nthPlayer');// 현재 참가자
+    const fnInitPeopleCheck = (people) => {
+      const first = 1;
+      if (people > first) {
+        $joinPeople.innerHTML = people;
+        $nthPlayer.textContent = first;
+      } 
+      
+      if (!people || people === first) {
+        alert('1명 이상이어야 게임이 가능합니다.');
+        setTimeout(function () {
+          location.reload();
+        }, 500);
+      }
+    }
+    fnInitPeopleCheck(people);
+
+    const regExp_checkKR = /[가-힣]/;
+    const $input = document.querySelector('#inputWord');    // 입력단어
+    const $check = document.querySelector('#check');        // 체크
+    const $word = document.querySelector('#word');          // 제시어
+    let word;       // 제시어
+    let inputWord;    // 입력한 단어
+
+    const fnProgressGame = () => {      
+      if (!word || word[word.length - 1] === inputWord[0]) {
+        word = inputWord
+        $word.textContent = word;
+        setEmptyValue();
+        setNextPlayer(Number($nthPlayer.textContent));
+      } else {
+        alert(`올바르지 않은 단어입니다.\n${word[word.length - 1]}로 시작하는 단어를 입력해주세요`);
+      }
+    }
+
+    const fnVadlidation = () => {
+      if (!inputWord) { //  입력단어 확인
+        alert('단어를 입력해주세요');
+        return;
+      }
+
+      if (!regExp_checkKR.test(inputWord)) {  // 단어 유효성 검사 (한글)
+        alert('한글만 입력가능합니다.');
+        setEmptyValue();
+        return;
+      } 
+
+      if (inputWord.length === 1) {
+        alert('2글자 이상 입력해주세요.');
+        return;
+      }
+      fnProgressGame();
+    }
+    const onInputWord = (e) => {
+      inputWord = e.target.value;
+    }
+
+    const setNextPlayer = (player) => {
+      player++;
+      if (player > people) {
+        player = 1;
+      }
+      $nthPlayer.textContent = player;
+    }
+
+    const setEmptyValue = () => {
+      inputWord = "";
+      $input.value = "";
+      $input.focus();
+    }
+
+    $input.addEventListener('input', onInputWord);
+    $check.addEventListener('click', fnVadlidation);
+
+  </script>
+</body>
+
+</html>

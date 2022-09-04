@@ -1,0 +1,76 @@
+table, tbody, tr, td, button {
+    margin: 0;
+    padding: 0;
+  }
+  button {
+    width: 100px;
+    height: 100px;
+    font-size: 40px;
+    color: #333;
+    border: 1px solid #bbb;
+    cursor: pointer;
+  }
+  
+  .wrap {
+    width: 410px;
+    margin: 50px auto 0 auto;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2), 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  .input-box {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #202020;
+  }
+  .displayBox {
+    color: #757575;
+    text-align: right;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  #numberInput {
+    position: absolute;
+    left: 7px;
+    bottom: 5px;
+    display: inline-block;
+    padding: 3px;
+    width: 94%;
+    height: 60px;
+    color: #fff;
+    text-align: right;
+    font-size: 50px;
+    box-sizing: border-box;
+    border: none;
+    background-color: #202020;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  button.number {
+    background-color: #efefef;
+  }
+  button.number:hover {
+    background: #ddd;
+  }
+  button.number:active {
+    background-color: #ccc;
+  }
+  button.operator {
+    background-color: #FF9B22;
+  }
+  button.operator:hover {
+    background-color: #f99112;
+  }
+  button.operator:active {
+    background-color: #EB7016;
+  }
+  .col2 button {
+    width: 201px;
+  }
+  .col3 button {
+    width: 303px;
+  }

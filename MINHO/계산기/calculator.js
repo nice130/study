@@ -7,17 +7,40 @@ const $InputBox = document.querySelector("#numberInput");
 const $displayBox = document.querySelector(".displayBox");
 const $comma = document.querySelector("#comma");
 const $equal = document.querySelector("#equal");
+let checkBtn = false
 
 function onClickNumber () {
+    if (calObj.checkBtn) {
+      $InputBox.value = ""
+    }
     const textValue = this.innerHTML;
-    $InputBox.value         += textValue;
     $displayBox.innerHTML   += textValue;
+    $InputBox.value   += textValue;
+    checkBtn = false
+   
 }
 
 function onClickOperator () {
     const operatorValue = this.innerHTML;
     $displayBox.innerHTML   += operatorValue;
-    log(operatorValue);
+    calObj.op = operatorValue;
+    checkBtn = true;
+    if (!calObj.checkPreNum) {
+      calObj.preNum = Number($InputBox.value)
+      console.log(calObj.preNum)
+      calObj.checkPreNum = true
+    } else {
+      calObj.nextNum = Number($InputBox.value)
+      console.log(calObj.nextNum)
+      $InputBox.value = "";
+      calObj.resultFn(calObj.preOp)
+      calObj.preNum = calObj.result
+      if (calObj.op == '=') {
+        calObj.checkPreNum = false
+        $displayBox.innerHTML += calObj.result +', '
+      }
+    }
+    calObj.preOp = calObj.op;
 }
 // // 숫자버튼 클릭시 inputNum함수 호출
 for (let i = 0; i < numbers.length; i++) {
@@ -33,6 +56,35 @@ $comma.addEventListener('click', function() {
     log(this.innerHTML);
 })
 
+let calObj = {
+  result : 0,
+  preNum : 0,
+  checkPreNum : false,
+  nextNum : 0,
+  preObj : null,
+  op : null,
+  resultFn: function(op) {
+    switch (op) {
+    case '+':
+    calObj.result = calObj.preNum + calObj.nextNum
+    console.log("result"+calObj.result)
+    break;
+    case '-':
+      calObj.result = calObj.preNum - calObj.nextNum
+    console.log("result"+calObj.result)
+    break;
+    case '*':
+      calObj.result = calObj.preNum * calObj.nextNum
+    console.log("result"+calObj.result)
+    break;
+    case '/':
+      calObj.result = calObj.preNum / calObj.nextNum
+    console.log("result"+calObj.result)
+    break;
+    }
+    $displayBox.value = calObj.result
+  }
+}
 
 // // 계산기 객체
 // let cal = {

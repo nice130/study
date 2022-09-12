@@ -13,64 +13,64 @@
         <button id ="next" onclick="next2()" style="display:none;">다음</button>
         <script>
             var word;
-            const nextLan = document.createElement("tr");
-            let num = 1;
+            var lan2;
+            var playerId = [];
+            const nextLan = document.createElement("div");
             const number = prompt('몇 명이 참가하나요?');
+            var sequence = 1;
+            if(number == 1 || number == 0){
+                alert('2명이상 참여가능합니다');
+                location.reload();
+            }
+            
             for(let i=1;i<=number;i++){
                 const temp = document.createElement("div");
-                temp.innerHTML = '<div><span>'+i+'</span>번째 참가자'
+                temp.innerHTML = '<div><span>'+i+'</span>번째 참가자 = '
                 +'<input id = "player'+i+'" name="player" type = "text"></div>';
-            document.querySelector("#order").append(temp);
+                document.querySelector("#order").append(temp);
             }
             function next(){
-                for(let i=1 ; i<=number;i++){
-                    const a = document.getElementById('player'+i);
-                    const value = a.value;
-                    const parent = a.parentNode;
-                    const tempElem = document.createElement("span");
-                    tempElem.innerHTML = value;
-                    parent.appendChild(tempElem);
-                    a.remove();
-                    
-                }
-                
                 const lan = prompt('첫번째 제시어');  
-                nextLan.innerHTML = '<td>'+lan+'=><td>'+'<input id =go type="text">';
+                nextLan.innerHTML = '<div>"'+document.getElementById('player1').value+'"님 차례</div><td>'+lan+'=></td>'+'<input id =go type="text">';
                 if(lan==null|| lan =='' ){
                     alert('제시어를 입력 해주세요');
-                    return;
+                    return false;
                 }else{
                     document.querySelector("#order").append(nextLan); 
                     const btn1 = document.getElementById('enter');
                     const btn2 = document.getElementById('next');
                     btn1.style.display = 'none';
                     btn2.style.display = 'block';
-                    console.log(document.getElementById('player1').value);
-                    
+                    for(let i=1 ; i<=number;i++){
+                    const a = document.getElementById('player'+i);
+                    const value = a.value;
+                    const parent = a.parentNode;
+                    const tempElem = document.createElement("span");
+                    tempElem.innerHTML = value;
+                    parent.appendChild(tempElem);
+                    playerId[i] = a.value; 
+                    a.remove();
+                    }
                 }
-                word = Array.from(lan)[Array.from(lan).length-1];
-                console.log(word);          
+                word = Array.from(lan)[Array.from(lan).length-1];        
             }
             function next2(){
-                // const lan2 = null;
-                const word2 = Array.from(lan2)[0];
-                for(let i=0;i<num;i++){
-                    lan2 = document.getElementById('go'+i).value;
-                    console.log('lan2==>'+lan2);
+                lan2 =document.getElementById("go").value;
+                word2 = Array.from(document.getElementById("go").value)[0];
+                if(lan2==null || lan2==''){
+                    alert('단어를 입력해주세요');
+                    return;
                 }
-                
-                if(word==null){
-                    word=Array.from(lan2)[Array.from(lan2).length-1];
-                }
-                console.log('첫단어 마지막=>'+word+'////두번째단어 첫번째=>'+word2);
                 if(word==word2){
-                    console.log('첫단어 마지막=>'+word+'////두번째단어 첫번째=>'+word2);
+                    sequence++;
+                    if(sequence > number){
+                    sequence = 1;
+                    };
                     document.querySelector("#order").append(nextLan); 
-                    nextLan.innerHTML = '<td>'+lan2+'=><td>'+'<input id =go'+num+' type="text">';
-                    word=null;
-                    num++;
+                    nextLan.innerHTML = '<div>"'+playerId[sequence]+'"님 차례</div><td>'+lan2+'=></td><input id =go type="text">';
+                    word=Array.from(lan2)[Array.from(lan2).length-1];
                 }else{
-                    alert('땡');
+                    alert('틀렸습니다. 플레이어 "'+playerId[sequence]+'"님 패배');
                 }
             }
         </script>

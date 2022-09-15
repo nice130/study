@@ -1,16 +1,37 @@
 <!DOCTYPE html>
+
 <head>
   <meta charset="utf-8">
   <title>계산기</title>
   <style>
-    * { box-sizing: border-box }
-    #result { width: 180px; height: 50px; margin: 5px; text-align: right }
-    #operator { width: 50px; height: 50px; margin: 5px; text-align: center }
-    button { width: 50px; height: 50px; margin: 5px }
+    * {
+      box-sizing: border-box
+    }
+
+    #result {
+      width: 180px;
+      height: 50px;
+      margin: 5px;
+      text-align: right
+    }
+
+    #operator {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      text-align: center
+    }
+
+    button {
+      width: 50px;
+      height: 50px;
+      margin: 5px
+    }
   </style>
 </head>
 
 <!--계산기버튼구현-->
+
 <body>
   <input readonly id="operator">
   <input readonly id="result">
@@ -38,6 +59,7 @@
     <button id="calculate">=</button>
     <button id="multiply" value="x">x</button>
   </div>
+<<<<<<< HEAD
 <script>
   let num1; //숫자1
   let num2; //숫자2
@@ -64,13 +86,29 @@
         let numb=$result.value.substr(0,$result.value.length-1);
         oper = e.target.textContent; 
         $result.value = numb + oper;
-      }
-      
-    }else{
-      alert('숫자를 먼저 입력해주세요');
-    }
-  }
+=======
+  <script>
+    let num1; //숫자1
+    let num2; //숫자2
+    let oper; //부등식
+    let num1Len;
+    let result;
+    const $result = document.querySelector('#result');
 
+
+    // 숫자클릭
+    const buttonClick = (e) => {
+      if (oper == null) {
+        num1 = e.target.textContent;
+      } else {
+        num2 = e.target.textContent;
+>>>>>>> ec8972a2aa1708f07d80e19aad203f520c7b7cd4
+      }
+      $result.value += e.target.textContent;
+      // num1Len = $result.value.length;
+    }
+
+<<<<<<< HEAD
   const calcu = (e) => {
     let cal = {
       no1 : Number(num1),
@@ -107,6 +145,66 @@
   document.querySelector('#multiply').addEventListener('click',operClick);
   
   document.querySelector('#calculate').addEventListener('click',calcu);
+=======
+    const operClick = (e) => {
+      if (num1 != null) {
+        if (oper == null || oper == '') {
+          oper = e.target.textContent;
+          $result.value += oper;
+        } else {
+          console.log('num1Len=' + num1Len);
+          let numb = $result.value.substr(0, $result.value.length - 1);
+          console.log('numb=' + numb);
+          oper = e.target.textContent;
+          $result.value = numb + oper;
+        }
 
-</script>
+      } else {
+        alert('숫자를 먼저 입력해주세요');
+      }
+    }
+>>>>>>> ec8972a2aa1708f07d80e19aad203f520c7b7cd4
+
+    const fnCalculate = () => {
+      console.log(oper);
+      switch (oper) {
+        case '+':
+          result = Number(num1) + Number(num2);
+          console.log("result" + result)
+          break;
+        case '-':
+          result = Number(num1) - Number(num2);
+          console.log("result" + result)
+          break;
+        case 'x':
+          result = Number(num1) * Number(num2);
+          console.log("result" + result)
+          break;
+        case '/':
+          result = Number(num1) / Number(num2);
+          console.log("result" + result)
+          break;
+      }
+      $result.value = result;
+
+    }
+
+    document.querySelector('#num-0').addEventListener('click', buttonClick);
+    document.querySelector('#num-1').addEventListener('click', buttonClick);
+    document.querySelector('#num-2').addEventListener('click', buttonClick);
+    document.querySelector('#num-3').addEventListener('click', buttonClick);
+    document.querySelector('#num-4').addEventListener('click', buttonClick);
+    document.querySelector('#num-5').addEventListener('click', buttonClick);
+    document.querySelector('#num-6').addEventListener('click', buttonClick);
+    document.querySelector('#num-7').addEventListener('click', buttonClick);
+    document.querySelector('#num-8').addEventListener('click', buttonClick);
+    document.querySelector('#num-9').addEventListener('click', buttonClick);
+
+    document.querySelector('#plus').addEventListener('click', operClick);
+    document.querySelector('#minus').addEventListener('click', operClick);
+    document.querySelector('#divide').addEventListener('click', operClick);
+    document.querySelector('#multiply').addEventListener('click', operClick);
+    document.querySelector('#calculate').addEventListener('click', fnCalculate)
+
+  </script>
 </body>

@@ -59,7 +59,10 @@ const onClickNumber = (e) => {
   $InputBox.value += numberValue;
 
 }
-
+/**
+ * 
+ * @param {event} e  
+ */
 const onClickOperator = (e) => {
   const operatorValue = e.target.value;
   $displayBox.innerHTML += operatorValue;
@@ -71,10 +74,15 @@ const onClickOperator = (e) => {
   }
 }
 
+
+const onClickEqual = () => {
+  calObj.resultFn(calObj.op);
+}
+
 const onClearValue = () => {
   $InputBox.value = "";
   $displayBox.innerHTML = "";
-  calObj.result, calObj.preNum, calObj.nextNum = '';
+  calObj.op, calObj.result, calObj.preNum, calObj.nextNum = '';
 }
 
 // // 숫자버튼 클릭시 inputNum함수 호출
@@ -91,6 +99,8 @@ $comma.addEventListener('click', function() {
     log(this.innerHTML);
 })
 
+$equal.addEventListener('click', onClickEqual);
+
 $clearBtn.addEventListener('click', onClearValue);
 
 let calObj = {
@@ -101,7 +111,8 @@ let calObj = {
   resultFn: function(op) {
     switch (op) {
     case '+':
-    calObj.result = calObj.preNum + calObj.nextNum
+      //문자를 더하는걸로 인식해서 숫자로 변경
+    calObj.result = Number(calObj.preNum) + Number(calObj.nextNum); 
     console.log("result"+calObj.result)
     break;
     case '-':

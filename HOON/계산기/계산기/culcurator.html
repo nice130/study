@@ -39,39 +39,55 @@
     <button id="multiply" value="x">x</button>
   </div>
 <script>
-  let num1 = null; //숫자1
-  let num2 = null; //숫자2
-  let oper = null; //부등식
+  let num1; //숫자1
+  let num2; //숫자2
+  let oper; //부등식
   let num1Len = null;
   const $result = document.querySelector('#result');
   
   const buttonClick = (e) => {
     if(oper==null){
-      num1 += e.target.textContent;
+      num1 = e.target.textContent;
     }else{
-      num2 += e.target.textContent;
+      num2 = e.target.textContent;
     }
     $result.value +=e.target.textContent;
     num1Len = $result.value.length;
   }
 
   const operClick = (e) => {
-    if(num1 =! null){
+    if(num1 != null ){
       if(oper==null || oper ==''){
         oper = e.target.textContent;
         $result.value += oper;
       }else{
-        console.log('num1Len='+num1Len);
         let numb=$result.value.substr(0,$result.value.length-1);
-        console.log('numb='+numb);
-        oper = e.target.textContent;  
+        oper = e.target.textContent; 
         $result.value = numb + oper;
-        console.log(number(value));
       }
       
     }else{
       alert('숫자를 먼저 입력해주세요');
     }
+  }
+
+  const calcu = (e) => {
+    let cal = {
+      no1 : Number(num1),
+      no2 : Number(num2),
+    };
+    console.log(oper.value);
+    let result;
+    if (oper=='+'){
+      result=cal.no1+cal.no2
+    }else if(oper == '-'){
+      result=cal.no1-cal.no2
+    }else if(oper == '*'){
+      result=cal.no1*cal.no2
+    }else if(oper == '/'){
+      result=cal.no1/cal.no2
+    }
+    $result.value = result;
   }
 
   document.querySelector('#num-0').addEventListener('click',buttonClick);
@@ -89,6 +105,8 @@
   document.querySelector('#minus').addEventListener('click',operClick);
   document.querySelector('#divide').addEventListener('click',operClick);
   document.querySelector('#multiply').addEventListener('click',operClick);
+  
+  document.querySelector('#calculate').addEventListener('click',calcu);
 
 </script>
 </body>

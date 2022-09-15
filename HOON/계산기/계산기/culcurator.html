@@ -13,23 +13,23 @@
 <!--계산기버튼구현-->
 <body>
   <input readonly id="operator">
-  <input readonly type="number" id="result">
+  <input readonly id="result">
   <div class="row">
-    <button id="num-7" value="7">7</button>
-    <button id="num-8" value="8">8</button>
-    <button id="num-9" value="9">9</button>
-    <button id="plus" value="+">+</button>
+    <button id="num-7">7</button>
+    <button id="num-8">8</button>
+    <button id="num-9">9</button>
+    <button id="plus">+</button>
   </div>
   <div class="row">
-    <button id="num-4" value="4">4</button>
-    <button id="num-5" value="5">5</button>
-    <button id="num-6" value="6">6</button>
-    <button id="minus" value="-">-</button>
+    <button id="num-4">4</button>
+    <button id="num-5">5</button>
+    <button id="num-6">6</button>
+    <button id="minus">-</button>
   </div>
   <div class="row">
-    <button id="num-1" value="1">1</button>
-    <button id="num-2" value="2">2</button>
-    <button id="num-3" value="3">3</button>
+    <button id="num-1">1</button>
+    <button id="num-2">2</button>
+    <button id="num-3">3</button>
     <button id="divide" value="/">/</button>
   </div>
   <div class="row">
@@ -39,18 +39,56 @@
     <button id="multiply" value="x">x</button>
   </div>
 <script>
-  let num1 = []; //숫자1
-  let num2 = []; //숫자2
+  let num1 = null; //숫자1
+  let num2 = null; //숫자2
   let oper = null; //부등식
-
-  document.querySelector('button').addEventListener('click',(e)=>{
-    console.log('버튼클릭');
-    if(oper == null){
-      num1 = e;
-      console.log(e);
-    };
-  });
+  let num1Len = null;
+  const $result = document.querySelector('#result');
   
+  const buttonClick = (e) => {
+    if(oper==null){
+      num1 += e.target.textContent;
+    }else{
+      num2 += e.target.textContent;
+    }
+    $result.value +=e.target.textContent;
+    num1Len = $result.value.length;
+  }
+
+  const operClick = (e) => {
+    if(num1 =! null){
+      if(oper==null || oper ==''){
+        oper = e.target.textContent;
+        $result.value += oper;
+      }else{
+        console.log('num1Len='+num1Len);
+        let numb=$result.value.substr(0,$result.value.length-1);
+        console.log('numb='+numb);
+        oper = e.target.textContent;  
+        $result.value = numb + oper;
+        console.log(number(value));
+      }
+      
+    }else{
+      alert('숫자를 먼저 입력해주세요');
+    }
+  }
+
+  document.querySelector('#num-0').addEventListener('click',buttonClick);
+  document.querySelector('#num-1').addEventListener('click',buttonClick);
+  document.querySelector('#num-2').addEventListener('click',buttonClick);
+  document.querySelector('#num-3').addEventListener('click',buttonClick);
+  document.querySelector('#num-4').addEventListener('click',buttonClick);
+  document.querySelector('#num-5').addEventListener('click',buttonClick);
+  document.querySelector('#num-6').addEventListener('click',buttonClick);
+  document.querySelector('#num-7').addEventListener('click',buttonClick);
+  document.querySelector('#num-8').addEventListener('click',buttonClick);
+  document.querySelector('#num-9').addEventListener('click',buttonClick);
+
+  document.querySelector('#plus').addEventListener('click',operClick);
+  document.querySelector('#minus').addEventListener('click',operClick);
+  document.querySelector('#divide').addEventListener('click',operClick);
+  document.querySelector('#multiply').addEventListener('click',operClick);
 
 </script>
 </body>

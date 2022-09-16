@@ -12,8 +12,8 @@
 
 <!--계산기버튼구현-->
 <body>
-  <input readonly id="operator">
   <input readonly id="result">
+    <button class="row" id="zum">.</button>
   <div class="row">
     <button id="num-7">7</button>
     <button id="num-8">8</button>
@@ -42,7 +42,8 @@
   let num1 = ''; //숫자1
   let num2 = ''; //숫자2
   let oper; //부등식
-  let result;
+  let re = 0; //소수점 2개이상못하게
+  let result; //결과값
   const $result = document.querySelector('#result');
   
   const buttonClick = (e) => {
@@ -55,22 +56,31 @@
   }
 
   const operClick = (e) => {
-    if(num1 != null){
-      if(oper==null || oper ==''){
+    if(num1 != null || num1 == ''){
+      if(num2 == null || num2 == ''){
+        if(oper==null || oper ==''){
+          oper = e.target.textContent;
+          $result.value += oper;
+        }else{
+          let numb=$result.value.substr(0,$result.value.length-1);
+          oper = e.target.textContent;  
+          $result.value = numb + oper;
+        }
+        re = 0;
+      }else{
+        calculateButton();
+        num1 = $result.value;
+        num2 = '';
+        re = 0;
         oper = e.target.textContent;
         $result.value += oper;
-      }else{
-        let numb=$result.value.substr(0,$result.value.length-1);
-        oper = e.target.textContent;  
-        $result.value = numb + oper;
       }
-      
     }else{
       alert('숫자를 먼저 입력해주세요');
     }
   }
 
-  const calculateButton = (e) => {
+  const calculateButton = () => {
     console.log('num1 = '+Number(num1) + '   num2 = '+Number(num2)+ '        oper = '+oper);
     switch(oper){
       case '+' :
@@ -79,7 +89,7 @@
       case '-' :
         result = Number(num1) - Number(num2) 
         break;
-      case '*' :
+      case 'x' :
         result = Number(num1) * Number(num2)
         break;
       case '/' :
@@ -97,6 +107,35 @@
     oper = '';
     $result.value = '';
   }
+  
+  const zumClick = (e)=>{
+    let zum = '.'
+    const textRe =() => {
+      $result.value += zum;
+    }
+    if(re == 0){
+      if(num1 ==null || num1==''){
+        alert('숫자를 먼저 입력하세요');
+      }else{
+        if(num2 ==null || num2 ==''){
+          if(oper ==null || oper == ''){
+            num1 += zum;
+            textRe();
+          }else{
+            alert('숫자를 먼저 입력하세요'); 
+            return;
+          }
+        }else{
+            num2 += zum;
+            textRe();
+        }
+        console.log('num1=>'+num1+'num2=>'+num2);
+        re++;
+      }
+    }else{
+      alert('소수점은 하나만 입력가능합니다');
+    }
+  }
 
   document.querySelector('#num-0').addEventListener('click',buttonClick);
   document.querySelector('#num-1').addEventListener('click',buttonClick);
@@ -108,6 +147,7 @@
   document.querySelector('#num-7').addEventListener('click',buttonClick);
   document.querySelector('#num-8').addEventListener('click',buttonClick);
   document.querySelector('#num-9').addEventListener('click',buttonClick);
+  document.querySelector('#zum').addEventListener('click',zumClick);
 
   document.querySelector('#plus').addEventListener('click',operClick);
   document.querySelector('#minus').addEventListener('click',operClick);

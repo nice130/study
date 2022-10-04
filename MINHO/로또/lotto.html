@@ -24,8 +24,8 @@
     <script>
         const log = console.log;
         const candidate = Array(45).fill().map((v, idx) => idx + 1);
+        const shuffle = []; 
 
-        const shuffle = [];
         while (candidate.length > 0) {
             const random = Math.floor(Math.random() * candidate.length); // 무작위 인덱스 뽑기
             const spliceArray = candidate.splice(random, 1); // 뽑은 값은 배열에 들어 있음
@@ -74,9 +74,6 @@
             winBalls.forEach((number, idx) => {
                 setTimeout(() => { drawBall(number, $result); }, 1000 * (idx + 1))
             })
-            return new Promise((resolve) => {
-                resolve();
-            })
         }
         const getBonusNumber = () => setTimeout(() => {
             drawBall(bonus, $bonus)
@@ -84,6 +81,7 @@
 
 
 
-        getLottoNumber().then(getBonusNumber);
+        getLottoNumber()
+        getBonusNumber();
     </script>
 </body>

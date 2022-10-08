@@ -18,8 +18,10 @@
 </head>
 
 <body>
+
 <div id="result">추첨 결과는? </div>
 <div id="bonus">보너스: </div>
+
 <script>
     const candidate = Array(45).fill().map((v,i) => i+1);
     const shuffle = [];
@@ -29,7 +31,48 @@
         const value = spliceArray[0]; // 배열에 들어 있는 값을 꺼낸다
         shuffle.push(value); //shuffle 배열에 넣는다.
     }
-    console.log(shuffle); //6-3 공정렬하기 하기
+    console.log(shuffle); 
+    const winBalls = shuffle.slice(0,6).sort((a,b)=>a-b);
+    const bonus = shuffle[6];
+    console.log(winBalls,bonus);
+    const $result = document.querySelector('#result');
 
+    for(let i = 0; i < winBalls.length; i++){
+      setTimeout(() => {
+        sameball(winBalls[i],$result);         
+      }, 1000 * (i+1));
+    };
+
+    const $bonus = document.querySelector('#bonus');
+    setTimeout(()=>{
+      sameball(bonus,$bonus);
+    },7000);
+    
+    const sameball=(number,$parent)=>{
+      const $ball = document.createElement('div');
+        $ball.className = 'ball';
+        colorize(number, $ball);
+        $ball.textContent = number;
+        $parent.appendChild($ball);
+    }
+
+    function colorize(number, $tag) {
+      if (number < 10) {
+        $tag.style.backgroundColor = 'red';
+        $tag.style.color = 'white';
+      } else if (number < 20) {
+        $tag.style.backgroundColor = 'orange';
+      } else if (number < 30) {
+        $tag.style.backgroundColor = 'yellow';
+      } else if (number < 40) {
+        $tag.style.backgroundColor = 'blue';
+        $tag.style.color = 'white';
+      } else {
+        $tag.style.backgroundColor = 'green';
+        $tag.style.color = 'white';
+      }
+    }
+    
+    
 </script>
 </body>

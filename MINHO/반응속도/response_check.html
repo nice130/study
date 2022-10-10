@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>반응속도</title>
+    <style>
+        #screen {
+            width: 300px;
+            height: 200px;
+            text-align: center;
+            user-select: none;
+        }
+
+        #screen.waiting {
+            background-color: aqua;
+        }
+
+        #screen.ready {
+            background-color: red;
+            color: white;
+        }
+
+        #screen.now {
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="screen" class="waiting">클릭해서 시작하세요</div>
+    <div id="result"></div>
+    <script>
+        let startTime, endTime;
+        let timeoutID;
+        const RECORDS = [];
+        const $screen = document.querySelector('#screen');
+        const $result = document.querySelector('#result');
+        $screen.addEventListener('click', function () {
+            const STATUS = {
+                READY: 'ready',
+                WATING: 'waiting',
+                NOW: 'now',
+                MSG: '초록색이 되면 클릭하세요.',
+                CLICK: '클릭하세요!',
+                START: '클릭해서 시작하세요!',
+                EALRY: '마음이 급하셨군요?!'
+            };
+            let screenStatus = $screen.classList;
+            if (screenStatus.contains(STATUS.WATING)) { // 대기 화면
+                $screen.className = '';
+                screenStatus.add(STATUS.READY);
+                $screen.textContent = STATUS.MSG;
+                startTime = new Date();
+                timeoutID = setTimeout(function () {
+                    $screen.className = '';
+                    screenStatus.add(STATUS.NOW);
+                    $screen.textContent = STATUS.CLICK;
+                }, Math.floor(Math.random() * 1000) + 2000);
+            } else if (screenStatus.contains(STATUS.READY)) { // 준비 화면
+                clearTimeout(timeoutID);
+                $screen.className = '';
+                screenStatus.add(STATUS.WATING);
+                $screen.innerHTML = `${STATUS.EALRY}<br>${STATUS.CLICK}`;
+            } else if (screenStatus.contains(STATUS.NOW)) { // 클릭 화면
+                endTime = new Date();
+                const current = endTime - startTime;
+                RECORDS.push(current);
+                const average = RECORDS.reduce((a, c) => a + c) / RECORDS.length;
+                $result.textContent = `현재 ${current.toFixed(2)}ms, 평균 ${average.toFixed(2)}ms`;
+                startTime, endTime = null;
+                $screen.className = '';
+                screenStatus.add(STATUS.WATING);
+                $screen.textContent = STATUS.START;
+            }
+        });
+    </script>
+</body>
+
+</html>

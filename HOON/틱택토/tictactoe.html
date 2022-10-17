@@ -26,16 +26,100 @@
         const rows = [];
         let turn = 'O';
 
-        const callback = (e) =>{
-            if(e.target.textContent !== ''){  //빈칸이아니라면
-                console.log('빈칸이아닙니다');
-            }else{  //빈칸이면
-                console.log('빈칸입니다');
-                e.target.textContent=turn;
-                turn = turn === 'X' ? 'O' : 'X';
+        const checkWinner = (target) =>{
+            const rowIndex = target.parentNode.rowIndex;
+            const cellIndex = target.cellIndex;
+         //세 칸 다 채워졌나?
+            let hasWinner = false;
+
+            //가로줄 검사
+            if(
+                rows[rowIndex][0].textContent === turn &&
+                rows[rowIndex][1].textContent === turn &&
+                rows[rowIndex][2].textContent === turn 
+            ){
+                hasWinner = true;
+            };
+            //세로줄 검사
+            if(
+                rows[0][cellIndex].textContent === turn &&
+                rows[1][cellIndex].textContent === turn &&
+                rows[2][cellIndex].textContent === turn 
+            ){
+                hasWinner = true;
+            };
+            //대각선 검사
+            if(
+                rows[0][0].textContent === turn &&
+                rows[1][1].textContent === turn &&
+                rows[2][2].textContent === turn 
+            ){
+                hasWinner = true;
+            };
+            if(
+                rows[0][2].textContent === turn &&
+                rows[1][1].textContent === turn &&
+                rows[2][0].textContent === turn
+            ){
+                hasWinner = true;
             }
+            return hasWinner;
         };
 
+        const callback = (e) =>{
+            if(e.target.textContent !== ''){  //빈칸이아니라면
+                return;
+            }
+            //빈칸이면
+            e.target.textContent=turn;
+            const hasWinner = checkWinner(e.target);
+            
+            //승자가 있으면
+            if(hasWinner){
+                $result.textContent = `${turn}님의 승리!`;
+                $table.removeEventListener('click',callback);
+                return;
+            }    
+            //승자가없고 끝났다면
+            // let draw = true;
+            // rows.forEach((row)=>{
+            //     row.forEach((cell)=>{
+            //         if(!cell.textContent){
+            //             draw = false;
+            //         }
+            //     });
+            // });
+            // if(draw){
+            //     $result.textContent = `무승부`;
+            //     return;
+            // };
+            // 승자가 없으면
+            const draw = rows.flat().every((cell) => cell.textContent);
+            if (draw) {
+              $result.textContent = `무승부`;
+              return;
+            }
+            turn = turn === 'X' ? 'O' :'X';
+            checkCom();
+        };
+        function checkCom(){
+            console.log(turn);
+            if(turn ==='X'){
+                const randIdx = Math.floor(Math.random()*3);
+                const randIdx1 = Math.floor(Math.random()*3)
+                const com=rows[randIdx][randIdx1];
+                console.log(com);
+                console.log('컴퓨터턴들어옴');
+                  if(com.textContent ===''){
+                      console.log(rows[randIdx][randIdx]);
+                      com.textContent = turn;
+                      turn = 'O';
+                  }else{
+                    checkCom();
+                  }
+            };
+        };
+        
         for (let i = 1; i <= 3; i++) {
             const $tr = document.createElement('tr');
             const cells = [];
@@ -50,6 +134,14 @@
         }
         body.appendChild($table);
         body.appendChild($result);
+
+        //문제
+        // const array = [1,'hello',null,undefined,false];
+        // const res = array.every((val) => val===null);
+        // console.log(res)
+
+        
+            
     </script>
 </body>
 

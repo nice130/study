@@ -9,17 +9,12 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const $root = document.getElementById('root');
-    let counter = 0;
-    function countUp() {
-        counter++;
-        render();
-    }
-
-    function render() {
-        ReactDOM.render(<Container />, $root);
-    }
     
-    function Container() {
+    function App() {
+        const [counter, setCounter] = React.useState(0);
+        const countUp = () => {
+            setCounter(counter+1);
+        };
         return (
             <div>
                 <h3>Total Clicks: {counter}</h3>
@@ -27,7 +22,7 @@
             </div>
         );
     }
-    render();
+    ReactDOM.render(<App />, $root);
 </script>
 <script>
     /*

@@ -7,20 +7,26 @@
 <script src ="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    let counter = 0;
-    function countUp(){
-        counter = counter+1;
-        render();
+    
+    function App() {
+        const [minutes, setMinutes] = React.useState();
+        const onChange = (e) =>{
+        setMinutes(e.target.value);
+        }
+        return(
+            <div>
+                <h1>Super Converter</h1>
+                <div><label htmlFor="minutes">Minutes</label>
+                    <input vlaue={minutes} id="minutes" placeholder="Minutes" 
+                    type="nuber" onChange={onChange}/>
+                </div>
+                <div>
+                    <label htmlFor="hours">Hours</label>
+                    <input value={minutes} id="hours" placeholder="Hours" type="nuber" />
+                </div>
+            </div>
+        )
     }
-    function reder(){
-        ReactDOM.render(<Container />,root);
-    }
-    const Container = () => (
-        <div>
-            <h3>total clicks : {counter}</h3>
-            <button onClick={countUp}>but</button>
-        </div>
-    );
-    render();
+    ReactDOM.render(<App />,root);
 </script>
 </html>

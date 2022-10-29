@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const $root = document.getElementById('root');
+    function App() {
+        const [counter, setCounter] = React.useState(0);
+        const countUp = () => {
+            // setCounter(counter+1);
+            setCounter((current) => current + 1)
+        };
+        return (
+            <div>
+                <h3>Total Clicks: {counter}</h3>
+                <button onClick={countUp}>Click me!</button>
+            </div>
+        );
+    }
+    ReactDOM.render(<App />, $root);
+</script>
+<script>
+    /*
+    const Title = () => (
+        <h3 id="title" onMouseEnter={()=> console.log("mouse Enter")}>
+            Hello I'm a title    
+        </h3>
+    );
+    const Button = () => (
+        <button
+            style={{bacgroundColor:"tomato",}}
+            onClick={()=>console.log("I'm Clicked")}>
+            Click me!
+        </button>
+    );
+    */
+</script>
+
+</html>

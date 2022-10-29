@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <div id="root"></div>
-    </body>
+
+<body>
+    <div id="root"></div>
+</body>
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const $root = document.getElementById('root');
+    let counter = 0;
+    function countUp() {
+        counter++;
+        render();
+    }
+
+    function render() {
+        ReactDOM.render(<Container />, $root);
+    }
+    
+    function Container() {
+        return (
+            <div>
+                <h3>Total Clicks: {counter}</h3>
+                <button onClick={countUp}>Click me!</button>
+            </div>
+        );
+    }
+    render();
+</script>
+<script>
+    /*
     const Title = () => (
         <h3 id="title" onMouseEnter={()=> console.log("mouse Enter")}>
             Hello I'm a title    
@@ -20,12 +43,7 @@
             Click me!
         </button>
     );
-    const Container = () => (
-       <div>
-            <Title />
-            <Button />
-        </div>
-    );
-    ReactDOM.render(<Container />, $root);
+    */
 </script>
+
 </html>

@@ -47,7 +47,9 @@
           />
         </div>
         <button onClick={reset}>Reset</button>
-        <button onClick={onFlip}>Flip</button>
+        <button onClick={onFlip}>
+          {flipped ? "Minutes to Hours" : 'Hours to Minutes'}
+          </button>
       </div>
     );
   }

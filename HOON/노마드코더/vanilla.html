@@ -2,83 +2,35 @@
 <body>
     <div id="root"></div>
 </body>
-<script src ="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src ="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
 <script src ="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js" ></script>
 <script src ="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
 <script type="text/babel">
-
-    function MinutesToHours() {
-        const [amount, setAmount] = React.useState(0);
-        const [inverted, setInverd] = React.useState(false);
-        const onChange = (e) =>{
-        setAmount(e.target.value);
-        }
-        const onInvert = () => {
-            reset();
-            setInverd((current) => !current);
-        };
-        const reset =()=>setAmount(0);
-        return(
-            <div>
-                <div><label htmlFor="minutes">Minutes</label>
-                    <input value={inverted ? amount * 60:amount} id="minutes" placeholder="Minutes" 
-                    disabled={inverted} type="number" onChange={onChange}/>
-                </div>
-                <div>
-                    <label htmlFor="hours">Hours</label>
-                    <input value={inverted ? amount : Math.round(amount / 60)} id="hours" placeholder="Hours" 
-                    disabled={!inverted} type="number" onChange={onChange}/>
-                </div>
-                <button onClick={reset}>초기화</button>
-                <button onClick={onInvert}>{inverted ? "분으로" : "시간으로"}</button>
-            </div>
-        )
+    function Btn({text, fontSize = 16}){
+        return <button
+        style={{
+            backgroundColor : "tomato",
+            color : "white",
+            padding : "10px 20px",
+            border:0,
+            borderRadius: 10,
+            fontSize,
+        }}>
+        {text}
+        </button>;
     }
-
-    function KmToMiles(){
-        const [Num, setNum] = React.useState(0);
-        const [Invert,setInvered] = React.useState(false);
-        const onChange = (e) =>{
-            setNum(e.target.value);
-        }
-        const onInvert = () =>{
-            reset();
-            setInvered((current)=>!current);
-        }
-        const reset = () => setNum(0);
-        return (
-            <div>
-                <div><label>KM</label>
-                    <input value ={Invert ? Num * 1.609344 : Num} id="Km" placeholder ="Km" type ="number" onChange ={onChange}
-                    disabled={Invert}/>
-                </div>    
-                <div><label>Miles</label>
-                    <input value ={Invert ? Num : Num/1.609344} id="Miles" placeholder = "Miles" type ="number" onChange ={onChange}
-                    disabled={!Invert}/>
-                </div>
-                <button onClick={reset}>초기화</button>
-                <button onClick={onInvert}>{Invert ? "Km로" : "Mile로"}</button>
-            </div>
-        )
+    Btn.propTypes = {
+        text : PropTypes.string.isRequired,
+        fontSize : PropTypes.number,
     }
-    
     function App() {
-        const [index,setIndex] = React.useState("xx");
-        const onSelect = (e) =>{
-            setIndex(e.target.value);
-        };
+        const [value, setValue] = React.useState("Save Changes");
+        const changeValue = () => setValue("Revert Changes");
         return(
             <div>
-                <h1>Super Converter</h1>
-                <select value = {index} onChange ={onSelect}>
-                    <option value ="xx">select your units</option>
-                    <option value ="0">Minutes & Hours</option>
-                    <option value ="1">Km & Miles</option>
-                </select>
-                <hr />
-                {index === "xx" ? "Please select yout units" : null}
-                {index === "0" ? <MinutesToHours /> : null}
-                {index ==="1" ? <KmToMiles /> : null}
+                <Btn text ={value} fontSize = {15}/>
+                <Btn text = {"Continue"}/>
             </div>
         )
     }

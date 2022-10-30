@@ -2,43 +2,49 @@
 <html>
 
 <body>
-    <div id="root"></div>
+  <div id="root"></div>
 </body>
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    const $root = document.getElementById('root');
-    function App() {
-        const [counter, setCounter] = React.useState(0);
-        const countUp = () => {
-            // setCounter(counter+1);
-            setCounter((current) => current + 1)
-        };
-        return (
-            <div>
-                <h3>Total Clicks: {counter}</h3>
-                <button onClick={countUp}>Click me!</button>
-            </div>
-        );
-    }
-    ReactDOM.render(<App />, $root);
+  const $root = document.getElementById('root');
+  function Btn({text, onClick}) {
+    console.log(text);
+    return (<button
+      onClick={onClick}
+      style={{
+        backgroundColor: "tomato",
+        color: "white",
+        padding: "10px 20px",
+        border: 0,
+        borderRadius: 10,
+      }}
+    >
+      {text}
+    </button>
+    );
+  }
+
+  Btn.propTypes = {
+    text: PropTypes.string.isRequired,
+    fontSize : PropTypes.number,
+  }
+  const MemorizedBtn = React.memo(Btn);
+  function App() {
+    const [value, setValue] = React.useState("Save Changes");
+    const changeValue = () => setValue("Revert Changes");
+    return (
+      <div>
+        <MemorizedBtn text={value} onClick={changeValue} />
+        <MemorizedBtn text="Continue" />
+      </div>
+    );
+  }
+  ReactDOM.render(<App />, $root);
 </script>
 <script>
-    /*
-    const Title = () => (
-        <h3 id="title" onMouseEnter={()=> console.log("mouse Enter")}>
-            Hello I'm a title    
-        </h3>
-    );
-    const Button = () => (
-        <button
-            style={{bacgroundColor:"tomato",}}
-            onClick={()=>console.log("I'm Clicked")}>
-            Click me!
-        </button>
-    );
-    */
+  
 </script>
-
 </html>

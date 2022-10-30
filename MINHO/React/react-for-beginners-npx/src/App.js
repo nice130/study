@@ -1,36 +1,43 @@
 // import Button from "./Button";
 // import styles from "./App.module.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 function App() {
-  const [counter, setValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const onClick = () => setValue((prev) => prev + 1);
-  const onChange = (e) => setKeyword(e.target.value);
-  console.log("I run all the time");
-  const OnlyOnce = () => {
-    console.log("CALL THE API...");
+  const [toDo, setToDo] = useState("");
+  const [toDos, setToDos] = useState([]);
+  const onChange = (e) => setToDo(e.target.value);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (toDo === "") {
+      return;
+    }
+    setToDos((currnet) => [...currnet, toDo]);
+    setToDo("");
   };
-  useEffect(() => {
-    OnlyOnce();
-  }, []);
-  useEffect(() => {
-    if (keyword !== "" && keyword.length > 5)
-    console.log("SEARCH FOR", keyword);
-  }, [keyword]);
+  const deleteBtn = (targetIdx) => {
+    setToDos(toDos.filter((_, idx) => idx !== targetIdx));
+  };
   return (
     <div>
-      {/* <h1 className={styles.title}>Welcome back!</h1> */}
-      {/* <Button text={"Continue"}/> */}
-      <input
-        value={keyword}
-        onChange={onChange}
-        type="text"
-        placeholder="Search here..."
-      />
-      <h1>{counter}</h1>
-      <button onClick={onClick}>click me!</button>
+      <h1>My ToDoList{toDos.length === 0 ? null : "(" + toDos.length + ")"}</h1>
+      <form onSubmit={onSubmit}>
+        <input
+          onChange={onChange}
+          value={toDo}
+          type="text"
+          placeholder="Write your to do..."
+        />
+        <button>Add To Do</button>
+      </form>
+      <hr />
+      <ul>
+        {toDos.map((item, idx) => (
+          <li key={idx}>
+            {item}
+            <button onClick={() => deleteBtn(idx)}>❌</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
-
 export default App;

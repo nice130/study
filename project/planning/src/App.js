@@ -3,13 +3,36 @@ import './App.css';
 import styles from'./styles.module.css';
 function App() {
   const {loading,setloading} = useState (true);
-  const {value,setValue} = useState([]);
-  const GoalsForm = (e) =>{
+  const {values,setValues} = useState({
+    status:'',
+    uname:'',
+    area:'',
+    year:'',
+    date:'',
+    progress:'',
+  });
+  const {
+    status, uname, area, year, date, progress
+  } = values;
 
+  const onChange = (e)=>{
+    const {name, value} = e.target;
+     setValues = {
+      ...values,
+      [name] : value,
+    }
+    
   };
+
+  const onClick = (e) =>{
+    const {name, value} = e.target;
+    console.log(values.status);
+    setValues('');
+  }
+  // setloading(false);
   return (
     <div>
-      {loading ? (<h1>Loading...</h1>) : <div>PLANNING</div>}
+      {loading ? <h1>Loading...</h1> : <div>PLANNING</div>}
       <tbody>
           <th rowSpan="3" className={styles.th}>GOALS</th>
               <tr>
@@ -22,24 +45,24 @@ function App() {
               </tr>
               <tr>
                 <td className={styles.td}>
-                  <input ></input>
+                  <input name ="status" onChange={onChange} value={status} />
                 </td>
                 <td className={styles.td}>
-                  <input></input>
+                  <input name = "uname" onChange={onChange} value={uname}/>
                 </td>
                 <td className={styles.td}>
-                  <input></input>
+                  <input name = "area" onChange={onChange} value={area}/>
                 </td>
                 <td className={styles.td}>
-                  <input></input>
+                  <input name = "year" onChange={onChange} value={year}/>
                 </td>
                 <td className={styles.td}>
-                  <input></input>
+                  <input name = "date" onChange={onChange} value={date}/>
                 </td>
                 <td className={styles.td}>
-                  <input></input>
+                  <input name = "progress" onChange={onChange} value={progress}/>
                 </td>
-                <button >입력</button>
+                <button onClick={onClick}>입력</button>
               </tr>
               
         </tbody>

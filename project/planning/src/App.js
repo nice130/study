@@ -1,23 +1,44 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
-
+import styles from'./styles.module.css';
 function App() {
+  const {loading,setloading} = useState (true);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {loading ? (<h1>Loading...</h1>) : <div>PLANNING</div>}
+      <tbody>
+          <th rowSpan="3" className={styles.th}>GOALS</th>
+              <tr>
+                <td className={styles.td}>Status</td>
+                <td className={styles.td}>Name</td>
+                <td className={styles.td}>Area</td>
+                <td className={styles.td}>Year</td>
+                <td className={styles.td}>Date</td>
+                <td className={styles.td}>Progress</td>
+              </tr>
+              <tr>
+                <td className={styles.td}>
+                  <input></input>
+                </td>
+                <td className={styles.td}>
+                  <input></input>
+                </td>
+                <td className={styles.td}>
+                  <input></input>
+                </td>
+                <td className={styles.td}>
+                  <input></input>
+                </td>
+                <td className={styles.td}>
+                  <input></input>
+                </td>
+                <td className={styles.td}>
+                  <input></input>
+                </td>
+              </tr>
+              <button>저장</button>
+        </tbody>
     </div>
   );
 }

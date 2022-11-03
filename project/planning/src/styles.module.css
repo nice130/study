@@ -1,0 +1,15 @@
+.td{
+    overflow: hidden; 
+    font-size: 14px; 
+    padding: 2px; 
+    width: 100px; 
+    border-right: 1px solid gray;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+}
+
+.th{
+    border-width: 10px;
+    width: 100px;
+}

@@ -3,7 +3,10 @@ import './App.css';
 import styles from'./styles.module.css';
 function App() {
   const {loading,setloading} = useState (true);
-  
+  const {value,setValue} = useState([]);
+  const GoalsForm = (e) =>{
+
+  };
   return (
     <div>
       {loading ? (<h1>Loading...</h1>) : <div>PLANNING</div>}
@@ -19,7 +22,7 @@ function App() {
               </tr>
               <tr>
                 <td className={styles.td}>
-                  <input></input>
+                  <input ></input>
                 </td>
                 <td className={styles.td}>
                   <input></input>
@@ -36,8 +39,9 @@ function App() {
                 <td className={styles.td}>
                   <input></input>
                 </td>
+                <button >입력</button>
               </tr>
-              <button>저장</button>
+              
         </tbody>
     </div>
   );

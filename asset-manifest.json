@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/study/MINHO/React/react-for-beginners-npx/static/css/main.37163983.css",
+    "main.js": "/study/MINHO/React/react-for-beginners-npx/static/js/main.9fb13402.js",
+    "index.html": "/study/MINHO/React/react-for-beginners-npx/index.html",
+    "main.37163983.css.map": "/study/MINHO/React/react-for-beginners-npx/static/css/main.37163983.css.map",
+    "main.9fb13402.js.map": "/study/MINHO/React/react-for-beginners-npx/static/js/main.9fb13402.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.37163983.css",
+    "static/js/main.9fb13402.js"
+  ]
+}

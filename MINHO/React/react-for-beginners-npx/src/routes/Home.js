@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Detail from "./Detail.js";
+import Movie from "../components/Movie"
 
-function Movie() {
+function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const getMovies = async() => {
@@ -20,9 +20,9 @@ function Movie() {
       loading ? (<h1>Loading...</h1>)
       : (
       <div>
-        {movies.map((movie,idx)=> (
-          <Detail 
-            key={idx}
+        {movies.map((movie)=> (
+          <Movie 
+            key={movie.id}
             coverImg={movie.medium_cover_image}
             title={movie.title}
             summary={movie.summary}
@@ -36,4 +36,4 @@ function Movie() {
 
 }
 
-export default Movie;
+export default Home;

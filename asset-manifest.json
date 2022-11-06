@@ -1,13 +1,10 @@
 {
   "files": {
-    "main.css": "/study/MINHO/React/react-for-beginners-npx/static/css/main.d1af3bdc.css",
-    "main.js": "/study/MINHO/React/react-for-beginners-npx/static/js/main.1b606f4b.js",
-    "index.html": "/study/MINHO/React/react-for-beginners-npx/index.html",
-    "main.d1af3bdc.css.map": "/study/MINHO/React/react-for-beginners-npx/static/css/main.d1af3bdc.css.map",
-    "main.1b606f4b.js.map": "/study/MINHO/React/react-for-beginners-npx/static/js/main.1b606f4b.js.map"
+    "main.js": "/study/tree/HoonProject/static/js/main.bb4251d3.js",
+    "index.html": "/study/tree/HoonProject/index.html",
+    "main.bb4251d3.js.map": "/study/tree/HoonProject/static/js/main.bb4251d3.js.map"
   },
   "entrypoints": [
-    "static/css/main.d1af3bdc.css",
-    "static/js/main.1b606f4b.js"
+    "static/js/main.bb4251d3.js"
   ]
 }

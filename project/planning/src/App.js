@@ -1,57 +1,13 @@
-<<<<<<< Updated upstream
-import { useState } from 'react';
-import './App.css';
-import styles from'./styles.module.css';
-function App() {
-  const {loading,setloading} = useState (true);
-  const {value,setValue} = useState([]);
-  const GoalsForm = (e) =>{
-
-  };
-  return (
-    <div>
-      {loading ? (<h1>Loading...</h1>) : <div>PLANNING</div>}
-      <tbody>
-          <th rowSpan="3" className={styles.th}>GOALS</th>
-              <tr>
-                <td className={styles.td}>Status</td>
-                <td className={styles.td}>Name</td>
-                <td className={styles.td}>Area</td>
-                <td className={styles.td}>Year</td>
-                <td className={styles.td}>Date</td>
-                <td className={styles.td}>Progress</td>
-              </tr>
-              <tr>
-                <td className={styles.td}>
-                  <input ></input>
-                </td>
-                <td className={styles.td}>
-                  <input></input>
-                </td>
-                <td className={styles.td}>
-                  <input></input>
-                </td>
-                <td className={styles.td}>
-                  <input></input>
-                </td>
-                <td className={styles.td}>
-                  <input></input>
-                </td>
-                <td className={styles.td}>
-                  <input></input>
-                </td>
-                <button >입력</button>
-              </tr>
-              
-        </tbody>
-=======
-import "./App.css";
+import styles from "./App.module.css";
 import { useState, useEffect } from "react";
+import data from "./data.json";
 
 function App() {
-  const [datas, setDatas] = useState([]);
-  function dateFormat(date) {
-    let dateFormat =
+  const columns = ["Status", "Name", "Date"];
+  const [rowData, setRowData] = useState([]);
+  const [newData, setNewData] = useState([]);
+  const dateFormat = (date) => {
+    let formatter =
       date.getFullYear() +
       "-" +
       (date.getMonth() + 1 < 9
@@ -59,56 +15,62 @@ function App() {
         : date.getMonth() + 1) +
       "-" +
       (date.getDate() < 9 ? "0" + date.getDate() : date.getDate());
-    return dateFormat;
-  }
-  const getDatas = () => {
-    setDatas([
-      {
-        Status: "Not Started",
-        Name: "게임 만들기",
-        Date: "2022-10-31",
-      },
-      {
-        Status: "Active",
-        Name: "자바스크립트 정복",
-        Date: "2022-10-16",
-      },
-      {
-        Status: "Active",
-        Name: "리액트 정복",
-        Date: "2022-11-13",
-      },
-    ]);
+    return formatter;
   };
+  const getDatas = () => {
+    setRowData(data);
+  };
+  function addRow() {
+    const rowsInput = {
+      Status: "",
+      Name: "",
+      Date: new Date(),
+    };
+    setRowData([...rowData, rowsInput]);
+  }
+  function deleteRow(e) {
+    const rows = [...rowData];
+    const index = e.target.dataset.row;
+    rows.splice(index, 1);
+    setRowData(rows);
+  }
+  function saveData() {}
   useEffect(() => {
     getDatas();
   }, []);
-  console.log(datas);
   return (
-    <div className="main">
+    <div className={styles.main}>
       <h1>PLANNING</h1>
-      <div className="container">
-        <div className="area">GOALS</div>
-        <div className="area">
+      <div className={styles.container}>
+        <div className={styles.area}>GOALS</div>
+        <div className={styles.area}>
           <table>
-            <tbody className="table">
+            <tbody className={styles.table}>
               <tr>
-                <th>Status</th>
-                <th>Name</th>
-                <th>Date</th>
+                {columns.map((column) => (
+                  <th key={column}>{column}</th>
+                ))}
+                <th>
+                  <button onClick={addRow}>추가</button>
+                </th>
               </tr>
-              {datas.map((data, idx) => (
+              {rowData.map((data, idx) => (
                 <tr key={idx}>
                   <td>{data.Status}</td>
                   <td>{data.Name}</td>
                   <td>{dateFormat(new Date(data.Date))}</td>
+                  <td>
+                    <button data-row={idx} onClick={deleteRow}>
+                      X
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          <button onClick={saveData}>저장</button>
         </div>
       </div>
->>>>>>> Stashed changes
     </div>
   );
 }

@@ -44,6 +44,9 @@ table, th, td {
   border: 1px solid #bcbcbc;
 }
 
+table , tr {
+  min-height: 25px;
+}
 .main {
   margin: 0 auto;
 }

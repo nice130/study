@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import styles from "./Home.module.css";
-import Movie from "../components/Movie";
+import { useParams, Link } from "react-router-dom";
+import { FaStar, FaChevronLeft } from "react-icons/fa";
+import styles from "./../routes/Detail.module.css";
+import Loading from "./../components/Loading";
 
 function Detail() {
   const { id } = useParams();
@@ -17,23 +18,33 @@ function Detail() {
   useEffect(() => {
     getMovie();
   }, []);
-  return (
-    <div className={styles.container}>
-      {loading ? (
-        <div className={styles.loader}>
-          <span>Loading...</span>
-        </div>
-      ) : (
+  return loading ? (
+    <Loading />
+  ) : (
+    <div>
+      <div className={styles.detail__Container}>
         <div>
-          <Movie
-            id={""}
-            coverImg={movie.medium_cover_image}
-            title={movie.title}
-            summary={movie.description_full}
-            genres={movie.genres}
-          />
+          <Link to={"/"} style={{ color: "black" }}>
+            <FaChevronLeft className={styles.back__Icon} />
+          </Link>
+          <h1>{movie.title_long}</h1>
         </div>
-      )}
+        <img
+          src={movie.medium_cover_image}
+          alt={movie.title}
+          className={styles.movie__Img}
+        />
+        <div style={{ margin: "10px" }}>
+          {Array(parseInt(movie.rating))
+            .fill(movie.rating)
+            .map((_, idx) => (
+              <FaStar color="gold" size={25} key={idx} />
+            ))}
+        </div>
+        <h3>Genres: {movie.genres.join(", ")}</h3>
+        <p>{movie.description_full}</p>
+      </div>
+      <img src={movie.background_image} className={styles.back__img}></img>
     </div>
   );
 }

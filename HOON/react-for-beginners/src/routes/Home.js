@@ -1,6 +1,6 @@
 import Movie from "../components/Movie";
 import {useState, useEffect} from "react";
-
+import Button from "./Button"
 function Home(){
   const [loading,setloading] = useState(true);
   const [movies, setMovies] = useState([]);
@@ -18,7 +18,10 @@ function Home(){
    },[]);
    return (
      <div>{loading ? (<h1>Loading...</h1>) 
-   :(<div> 
+   :(
+    
+   <div> 
+    <Button />
        {movies.map((movie) => (
        <Movie key={movie.id} id={movie.id} coverImg={movie.medium_cover_image}  title={movie.title}
        summary ={movie.summary} genres = {movie.genres}/>)

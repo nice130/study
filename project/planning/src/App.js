@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import './App.css';
 import styles from'./styles.module.css';
+import DetailList from './DetailList';
 function App() {
   // const {loading,setloading} = useState (true);
-  
+  const [countList, setCountList] = useState([0])
   const [saveValues,setSaveVluese] = useState();
   const [values,setValues] = useState({
     status:'',
@@ -23,24 +24,12 @@ function App() {
       ...values,
       [name] : value,
     })
-  };
-  
-  function addtr() {
-    return(
-      <tr>
-          <td className={styles.td}>{status}</td>
-          <td className={styles.td}>{uname}</td>
-          <td className={styles.td}>{area}</td>
-          <td className={styles.td}>{year}</td>
-          <td className={styles.td}>{date}</td>
-          <td className={styles.td}>{progress}</td>
-      </tr>
-    );
-  }
+    setSaveVluese(values);
+  }; 
 
   const onClick = () =>{
+    setCountList(countArr)
     setValues(values);
-    addtr();
     setValues({
       status:'',
       uname:'',
@@ -64,6 +53,7 @@ function App() {
           <td className={styles.td}>Date</td>
           <td className={styles.td}>Progress</td>
         </tr>
+        <DetailList values={saveValues} />
         <tr>
           <td className={styles.td}>
             <input name ="status" onChange={onChange} value={status} type='text'/>

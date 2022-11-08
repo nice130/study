@@ -24,7 +24,7 @@ function App() {
     })
   }; 
   const onClick = () =>{
-    setSaveVluese(currentArray =>[values,...currentArray]);
+    setSaveVluese(currentArray =>[...currentArray,values]);
     setValues({
       status:'',
       uname:'',
@@ -59,22 +59,22 @@ function App() {
           </tr>
         ))}
         <tr>
-          <td className={styles.td}>
+          <td>
             <input className={styles.input} name ="status" onChange={onChange} value={status} type='text'/>
           </td>
-          <td className={styles.td}>
+          <td>
             <input className={styles.input} name = "uname" onChange={onChange} value={uname} type='text'/>
           </td>
-          <td className={styles.td}>
+          <td>
             <input className={styles.input} name = "area" onChange={onChange} value={area} type='text'/>
           </td>
-          <td className={styles.td}>
+          <td>
             <input className={styles.input} name = "year" onChange={onChange} value={year} type='text'/>
           </td>
-          <td className={styles.td}>
+          <td>
             <input className={styles.input} name = "date" onChange={onChange} value={date} type='text'/>
           </td>
-          <td className={styles.td}>
+          <td>
             <input className={styles.input} name = "progress" onChange={onChange} value={progress} type='text'/>
           </td>
           <button className ={styles.but}onClick={onClick}>입력</button>

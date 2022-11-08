@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from'./styles.module.css';
 function App() {
   const [colums,setColums] = useState([]);
-  const [saveValues,setSaveVluese] = useState([]);
+  const [saveValues,setSaveValues] = useState([]);
   const [count,setCount] =useState(2);
   const [values,setValues] = useState({
     status:'',
@@ -23,15 +23,27 @@ function App() {
     })
   }; 
 
+  const onChange2 = (e)=>{
+    const {name, value} = e.target;
+    const idx = e.target.dataset.idx;
+    console.log(saveValues);
+    saveValues[idx][name] = value;
+    setSaveValues ({
+      ...saveValues,
+      [name] : value,
+    })
+    setSaveValues([saveValues]);
+  }; 
+
   const deleteRow = (e)=>{
     const rows = [...saveValues];
     const idx = e.target.closest('tr').dataset.rowIdx;
     rows.splice(idx,1);
-    setSaveVluese(rows);
+    setSaveValues(rows);
   }
 
   const onClick = () =>{
-    setSaveVluese(currentArray =>[...currentArray,values]);
+    setSaveValues(currentArray =>[...currentArray,values]);
     setValues({
       status:'',
       uname:'',
@@ -58,22 +70,22 @@ function App() {
         {saveValues.map((item,idx)=>(
           <tr data-row-idx={idx}>
             <td className={styles.saveTd}>
-              <input className={styles.input} value={item.status} onChange={onChange}></input>
+              <input name ="status" className={styles.input} value={item.status} onChange={onChange2} data-idx={idx}></input>
             </td>
             <td className={styles.saveTd}>
-              <input className={styles.input} value={item.uname} onChange={onChange}></input>
+              <input name ="uname" className={styles.input} value={item.uname} onChange={onChange2}></input>
             </td>
             <td className={styles.saveTd}>
-              <input className={styles.input} value={item.area} onChange={onChange}></input>  
+              <input name ="area" className={styles.input} value={item.area} onChange={onChange2}></input>  
             </td>
             <td className={styles.saveTd}>
-              <input className={styles.input} value={item.year} onChange={onChange}></input>  
+              <input name ="year" className={styles.input} value={item.year} onChange={onChange2}></input>  
             </td>
             <td className={styles.saveTd}>
-              <input className={styles.input} value={item.date} onChange={onChange}></input>  
+              <input name ="date" className={styles.input} value={item.date} onChange={onChange2}></input>  
             </td>
             <td className={styles.saveTd}>
-              <input className={styles.input} value={item.progress} onChange={onChange}></input>  
+              <input name ="progress" className={styles.input} value={item.progress} onChange={onChange2}></input>  
             </td>
             <td>
               <button className={styles.but} onClick={deleteRow}>x</button>

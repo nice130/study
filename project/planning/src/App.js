@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import './App.css';
 import styles from'./styles.module.css';
 function App() {
   const {loading,setloading} = useState(true);
@@ -38,7 +37,7 @@ function App() {
   };
   return (
     <div>{loading ? (<h1>Loading...</h1>) :(<div>
-     <div>PLANNING</div>
+     <h1>PLANNING</h1>
       <tbody>
         <tr>
           <td rowSpan={count} className={styles.th}>GOALS</td>

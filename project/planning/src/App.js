@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from'./styles.module.css';
 function App() {
   const [saveValues,setSaveValues] = useState([]);
@@ -25,13 +25,11 @@ function App() {
   const onChange2 = (e)=>{
     const {name, value} = e.target;
     const idx = e.target.dataset.idx;
-    // saveValues[idx][name] = value;
-    console.log(saveValues[idx]);
+    saveValues[idx][name] = value;
     setSaveValues ({
       ...saveValues[idx],
       [name] : value,
     })
-    
     setSaveValues([...saveValues],[saveValues]);
   }; 
 
@@ -56,8 +54,10 @@ function App() {
     })
     setCount(count+1);
   };
+
   return (
-    <div>
+    <div className={styles.main}>
+     <img src={require('./img/fire.png')}/>
      <h1>PLANNING</h1>
       <tbody className={styles.body}>
         <tr>

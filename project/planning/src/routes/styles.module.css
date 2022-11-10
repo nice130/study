@@ -1,12 +1,15 @@
 .main{
-    padding: 10PX;
+
+}
+
+.body{
+    width: 90vh
 }
 
 .td{
     overflow: hidden; 
     font-size: 14px; 
-    padding: 2px; 
-    width: 100px; 
+    float: left;width:10%; padding:10px;
     border-right: 1px solid gray;
     border-width: 1px;
     border-style: solid;
@@ -19,10 +22,8 @@
     width: 100px;
 }
 .input{
-    overflow: hidden; 
     font-size: 10px; 
-    padding: 2px; 
-    width: 100px; 
+    width: auto; padding:10px;
     border-right: 1px solid pink;
     border-width: 1px;
     border-style: ridge;
@@ -32,8 +33,7 @@
 .saveTd{
     overflow: hidden; 
     font-size: 10px; 
-    padding: 2px; 
-    width: 100px; 
+    float: left; width: auto; padding:10px;
     border-right: 1px solid gray;
     border-width: 1px;
     border-style: solid;
@@ -43,7 +43,7 @@
 .but {
     background-color: white;
     color: skyblue;
-    padding: 1px 10px;
+    padding: 8px 10px;
     text-align: center;
     text-decoration: none;
     font-size: 5px;
@@ -51,4 +51,19 @@
 .but:hover {
     background-color: #6aafe6;
     color: #d4dfe6;
+}
+
+.show{
+    width: 376px;
+    height: 500px;
+    position: absolute;
+    right: 0px;
+    transition: 1s;
+}
+.hide{
+    width: 376px;
+    height: 500px;
+    position: absolute;
+    right: -376px;
+    transition: 1s;
 }

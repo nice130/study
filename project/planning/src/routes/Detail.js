@@ -1,4 +1,6 @@
 import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
 function Detail() {
   const location = useLocation();
   console.log(location);

@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import styles from "./styles.module.css";
 import { useParams, Link } from "react-router-dom";
 import Detail from "./Detail";
+import { useHistory } from "react-router-dom";
+
 const columns = {
   Status: { placeholder: "진행단계", value: "" },
   MemberName: { placeholder: "멤버이름", value: "" },
@@ -59,9 +61,11 @@ function Home() {
     setSaveValues([...saveValues, newValues]);
     setNewValues({ ...initObject });
   };
+
+  const history = useHistory();
   return (
     <div className={styles.main}>
-      <img src={require("../img/fire.png")} />
+      {/* <img src={require("../img/fire.png")} /> */}
       <h1>PLANNING</h1>
       <div className={styles.container}>
         <div className={styles.area}>GOALS</div>
@@ -90,7 +94,15 @@ function Home() {
 
                   <td>
                     <button className={styles.btn}>
-                      <Link to={`/detail/${idx}`} state={{ item: item }}>
+                      {/* <Link to={`/detail/${idx}`} state={{ test: "hello" }}>
+                        MORE
+                      </Link> */}
+                      <Link
+                        to={{
+                          pathname: `/detail/${idx}`,
+                          state: { targetItem: item },
+                        }}
+                      >
                         MORE
                       </Link>
                     </button>

@@ -1,16 +1,17 @@
-import { useState,useRef } from 'react';
+import { useState } from 'react';
 import styles from'./styles.module.css';
 import Detail from './Detail';
 
 function Home(){
   const [isDetail,setIsDetail] = useState(false);
-  const toggleDetail = () =>{
-    console.log(isDetail);
+  const toggleDetail = (e) =>{
+    const {name, value} = e.target;
+    const idx = e.target.dataset.idx;
+    
     setIsDetail(isDetail=>!isDetail);
   }  
   const [saveValues,setSaveValues] = useState([]);
   const [count,setCount] =useState(2);
-  const textarea = useRef();
   const [values,setValues] = useState({
     status:'',
     uname:'',
@@ -24,13 +25,6 @@ function Home(){
     status, uname, area, year, date, progress,cname
   } = values;
   const onChange = (e)=>{
-    
-    const HandleResizeHeight = () =>{
-      console.log("???")
-      console.log(textarea.current.scrollHeight+'px');
-      textarea.current.style.height = 'auto';
-      textarea.current.style.height = textarea.current.scrollHeight+'px';
-    };
     const {name, value} = e.target;
      setValues ({
       ...values,
@@ -58,8 +52,6 @@ function Home(){
 
   const onClick = () =>{
     setSaveValues(currentArray =>[...currentArray,values]);
-    localStorage.setItem('1',saveValues);
-    console.log(localStorage.getItem('1'));
     setValues({
       status:'',
       uname:'',
@@ -68,6 +60,7 @@ function Home(){
       date:'',
       progress:'',
       uname:'',
+      cname:''
     })
     setCount(count+1);
   };
@@ -89,6 +82,9 @@ function Home(){
         </tr>
         {saveValues.map((item,idx)=>(
           <tr data-row-idx={idx}>
+            <td className={isDetail ? styles.show : styles.hide}>
+              <Detail props={item}/>  
+            </td>
               <input name ="status" className={styles.td} value={item.status} onChange={onChange2} data-idx={idx}></input>
               <input name ="uname" className={styles.td} value={item.uname} onChange={onChange2} data-idx={idx}></input>
               <input name ="cname" className={styles.td} value={item.cname} onChange={onChange2} data-idx={idx}></input>
@@ -96,7 +92,7 @@ function Home(){
               <input name ="year" className={styles.td} value={item.year} onChange={onChange2} data-idx={idx}></input>  
               <input name ="date" className={styles.td} value={item.date} onChange={onChange2} data-idx={idx}></input>  
               <input name ="progress" className={styles.td} value={item.progress} onChange={onChange2} data-idx={idx}></input>  
-              <button onClick={()=>toggleDetail()}className={styles.but}>자세히</button>
+              <button onClick={toggleDetail} data-idx={idx} className={styles.but}>자세히</button>
               <button className={styles.but} onClick={deleteRow}>제거</button>
           </tr>
         ))}
@@ -110,9 +106,6 @@ function Home(){
             <input placeholder="진행정도"  className={styles.td} name = "progress" onChange={onChange} value={progress} type='text'/>
           <button className ={styles.but}onClick={onClick}>입력</button>
         </tr> 
-        <tr className={isDetail ? styles.show : styles.hide}>
-            <Detail/>
-        </tr>
         </tbody>
         
     </div>

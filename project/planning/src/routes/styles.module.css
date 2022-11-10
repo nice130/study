@@ -57,7 +57,7 @@
     width: 376px;
     height: 500px;
     position: absolute;
-    right: 0px;
+    right: 400px;
     transition: 1s;
 }
 .hide{
@@ -66,4 +66,17 @@
     position: absolute;
     right: -376px;
     transition: 1s;
+}
+
+.detail{
+    background-color: white;
+    width: 100vh
+}
+.butHide{
+    background-color: white;
+    color: skyblue;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 5px;
 }

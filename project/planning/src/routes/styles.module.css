@@ -1,0 +1,88 @@
+.body {
+    width: 90vh
+}
+
+
+
+table > tr, th {
+    border: 1px solid black;
+    min-height: 100px;
+}
+
+.main {
+    margin: 0 auto;
+}
+
+.main .container {
+    display: block;
+    margin: 0 -5px;
+}
+
+.area {
+    display: inline-block;
+    padding: 0 5px;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.area:first-child {
+    width: 30%;
+}
+
+.area:last-child {
+    width: 70%;
+}
+
+/* .td {
+    overflow: hidden;
+    font-size: 14px;
+    float: left;
+    width: 10%;
+    padding: 10px;
+    border-right: 1px solid gray;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+} */
+
+.saveTd {
+    overflow: hidden;
+    font-size: 10px;
+    float: left;
+    width: auto;
+    padding: 10px;
+    border-right: 1px solid gray;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+}
+
+.btn {
+    background-color: rgb(238, 238, 238);
+    color: tomato;
+    padding: 2px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+}
+.btn:hover {
+    background-color: #6aafe6;
+    color: #d4dfe6;
+}
+
+/* .show {
+    width: 376px;
+    height: 500px;
+    position: absolute;
+    right: 0px;
+    transition: 1s;
+}
+
+.hide {
+    width: 376px;
+    height: 500px;
+    position: absolute;
+    right: -376px;
+    transition: 1s;
+} */

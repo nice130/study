@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import logo from './logo.svg';
 import './App.css';
 
@@ -19,6 +20,25 @@ function App() {
         </a>
       </header>
     </div>
+=======
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Detail from "./routes/Detail";
+import Home from "./routes/Home";
+import { useState } from "react";
+
+function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/detail/:idx" useState>
+          <Detail />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
+>>>>>>> Stashed changes
   );
 }
 

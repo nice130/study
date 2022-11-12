@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
+import ToggleDetail from "./ToggleDetail";
 
 const columns = {
   Status: { placeholder: "진행단계", value: "" },
@@ -12,13 +13,21 @@ const columns = {
   Progress: { placeholder: "진행정도", value: "" },
 };
 function Home() {
+  const [toggleObj,setToggleObj] = useState({});
   const initObject = Object.keys(columns).reduce((object, value, index) => {
     object[value] = "";
     return object;
   }, {});
+  const [isDetail,setIsDetail] = useState(false);
   const [saveValues, setSaveValues] = useState([]);
   const [newValues, setNewValues] = useState({ ...initObject });
   const getItem = idx => saveValues[idx];
+  const toggleOn = (e) => {
+    const idx = e.target.closest("tr").dataset.rowIdx;
+    setToggleObj(getItem(idx));
+    console.log(toggleObj);
+    return setIsDetail(isDetail=>!isDetail);
+  };
   const onChange = (e) => {
     const { name, value } = e.target;
     setNewValues({
@@ -80,20 +89,20 @@ function Home() {
                   ))}
 
                   <td>
-                    <button className={styles.btn}>
+                    <button onClick={toggleOn} className={styles.btn}>MORE
                       {/* <Link 
                       to={`/detail/${idx}`} 
                       state={{ test: "hello" }}>
                         MORE
                       </Link> */}
-                      <Link
+                      {/* <Link
                         to={{
                           pathname: `/detail/${idx}`,
                           state: getItem(idx),
                         }}
                       >
                         MORE
-                      </Link>
+                      </Link> */}
                     </button>
                     <button className={styles.btn} onClick={deleteRow}>
                       X
@@ -103,15 +112,15 @@ function Home() {
               ))}
 
               <tr>
-                {Object.keys(initObject).map((item) => {
+                {Object.keys(initObject).map((key) => {
                   return (
                     <td>
                       <input
-                        placeholder={columns[item].placeholder}
+                        placeholder={columns[key].placeholder}
                         className={styles.td}
-                        name={item}
+                        name={key}
                         onChange={onChange}
-                        value={newValues[item]}
+                        value={newValues[key]}
                         type="text"
                       />
                     </td>
@@ -126,7 +135,11 @@ function Home() {
             </tbody>
           </table>
         </div>
-      </div>      
+      </div> 
+      <div 
+      className={isDetail ? styles.show : styles.hide}>
+        <ToggleDetail targetObj={toggleObj}/>
+      </div>
     </div>
   );
 }

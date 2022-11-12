@@ -71,18 +71,10 @@ table > tr, th {
     color: #d4dfe6;
 }
 
-/* .show {
-    width: 376px;
-    height: 500px;
-    position: absolute;
-    right: 0px;
-    transition: 1s;
+.show {
+    display: block;
 }
 
 .hide {
-    width: 376px;
-    height: 500px;
-    position: absolute;
-    right: -376px;
-    transition: 1s;
-} */
+   display: none;
+}

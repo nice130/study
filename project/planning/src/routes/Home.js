@@ -1,8 +1,6 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import styles from "./styles.module.css";
-import { useParams, Link } from "react-router-dom";
-import Detail from "./Detail";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const columns = {
   Status: { placeholder: "진행단계", value: "" },
@@ -20,17 +18,7 @@ function Home() {
   }, {});
   const [saveValues, setSaveValues] = useState([]);
   const [newValues, setNewValues] = useState({ ...initObject });
-  const textarea = useRef();
-
-  const HandleResizeHeight = () => {
-    textarea.current.style.height = "auto";
-    textarea.current.style.height = textarea.current.scrollHeight + "px";
-  };
-  const showDetail = (idx) => [...saveValues][idx];
-  const testData = {
-    a: 1,
-    b: 2,
-  };
+  const getItem = idx => saveValues[idx];
   const onChange = (e) => {
     const { name, value } = e.target;
     setNewValues({
@@ -62,7 +50,6 @@ function Home() {
     setNewValues({ ...initObject });
   };
 
-  const history = useHistory();
   return (
     <div className={styles.main}>
       {/* <img src={require("../img/fire.png")} /> */}
@@ -94,13 +81,15 @@ function Home() {
 
                   <td>
                     <button className={styles.btn}>
-                      {/* <Link to={`/detail/${idx}`} state={{ test: "hello" }}>
+                      {/* <Link 
+                      to={`/detail/${idx}`} 
+                      state={{ test: "hello" }}>
                         MORE
                       </Link> */}
                       <Link
                         to={{
                           pathname: `/detail/${idx}`,
-                          state: { targetItem: item },
+                          state: getItem(idx),
                         }}
                       >
                         MORE
@@ -137,7 +126,7 @@ function Home() {
             </tbody>
           </table>
         </div>
-      </div>
+      </div>      
     </div>
   );
 }

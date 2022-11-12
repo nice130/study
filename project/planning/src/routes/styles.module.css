@@ -3,13 +3,16 @@
 }
 
 .body{
-    width: 90vh
+    width: 70vh
 }
 
-.td{
+tbody>tr{
+    width: 100vh
+}
+tbody td,input{
     overflow: hidden; 
     font-size: 14px; 
-    float: left;width:10%; padding:10px;
+    width:auto; padding:auto;
     border-right: 1px solid gray;
     border-width: 1px;
     border-style: solid;
@@ -23,23 +26,7 @@
 }
 .input{
     font-size: 10px; 
-    width: auto; padding:10px;
-    border-right: 1px solid pink;
-    border-width: 1px;
-    border-style: ridge;
-    text-align: center;
 }
-
-.saveTd{
-    overflow: hidden; 
-    font-size: 10px; 
-    float: left; width: auto; padding:10px;
-    border-right: 1px solid gray;
-    border-width: 1px;
-    border-style: solid;
-    text-align: center;
-}
-
 .but {
     background-color: white;
     color: skyblue;
@@ -47,6 +34,7 @@
     text-align: center;
     text-decoration: none;
     font-size: 5px;
+    width: 60px;
 }
 .but:hover {
     background-color: #6aafe6;

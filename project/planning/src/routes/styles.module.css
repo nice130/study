@@ -1,5 +1,22 @@
 .main{
-
+    overflow: auto;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+}
+.main::-webkit-scrollbar { 
+    display: grid;
+    width: 5px;
+    height: 10px;
+}
+.main::-webkit-scrollbar-thumb {
+  background-color: skyblue;
+  border-radius: 10px;
+}
+.main::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px skyblue;
 }
 
 .body{
@@ -54,25 +71,48 @@
 }
 
 .show{
-    width: 500px;
-    height: 500px;
+    width: 50vw;
+    height: 100vh;
     position: absolute;
-    right: 300px;
+    right: 0vh;
     transition: 1s;
     overflow: hidden;
 }
 .hide{
-    width: 500px;
+    width: 600px;
     height: 500px;
     position: absolute;
-    right: -500px;
+    right: -700px;
     transition: 1s;
     overflow: hidden;
 }
-
+.dtd{
+    width: auto;
+}
 .detail{
     background-color: white;
-    width: 100vW
+    border-color: skyblue;
+    width: auto;
+    height: 100vh;
+    border-width: 1px;
+    border-style: solid;
+    overflow: auto;
+    padding: 10px;
+    max-height: calc(100vh - 210px);
+}
+.detail::-webkit-scrollbar { 
+    display: grid;
+    width: 13px;
+    height: 10px;
+}
+.detail::-webkit-scrollbar-thumb {
+  background-color: rgb(212, 238, 248);
+  border-radius: 10px;
+}
+.detail::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px rgb(212, 238, 248);
 }
 .butHide{
     background-color: white;
@@ -83,6 +123,7 @@
     font-size: 5px;
     width: 30px;
     border:none;
+    position: fixed;
 }
 .butHide:hover{
     background-color: #6aafe6;

@@ -69,23 +69,38 @@ function Detail(props){
             </tr>
                 {saveValues.map((item,idx)=>(
                     <tr data-row-idx={idx}>
+                            <td className={styles.dtd}>
                         <input name ="status" className={styles.mapinput} value={item.status} onChange={onChange2} data-idx={idx}></input>
+                        </td>
+                            <td className={styles.dtd}>
                         <input name ="uname" className={styles.mapinput} value={item.uname} onChange={onChange2} data-idx={idx}></input>
+                        </td>
+                            <td className={styles.dtd}>
                         <input name ="cname" className={styles.mapinput} value={item.cname} onChange={onChange2} data-idx={idx}></input>
+                        </td>
+                            <td className={styles.dtd}>
                         <input name ="area" className={styles.mapinput} value={item.area} onChange={onChange2} data-idx={idx}></input>  
+                        </td>
+                            <td className={styles.dtd}>
                         <input name ="year" className={styles.mapinput} value={item.year} onChange={onChange2} data-idx={idx}></input>  
+                        </td>
+                            <td className={styles.dtd}>
                         <input name ="date" className={styles.mapinput} value={item.date} onChange={onChange2} data-idx={idx}></input>  
+                        </td>
+                            <td className={styles.dtd}>
                         <input name ="progress" className={styles.mapinput} value={item.progress} onChange={onChange2} data-idx={idx}></input>  
+                        </td>
+            
                         <button className={styles.but} onClick={deleteRow}>제거</button>
                     </tr>
                 ))}
             <tr>
                 {Object.keys(initObject).map((item) => {
                     return (
-                        <td className={styles.td}>
+                        <td className={styles.dtd}>
                             <input
                                 placeholder={columns[item].placeholder}
-                                className={styles.input}
+                                className={styles.mapinput}
                                 name={item}
                                 onChange={onChange}
                                 value={values[item]}

@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import styles from'./styles.module.css';
 import Detail from './Detail';
-import Test from './Test';
-import ReactDOM from "react-dom/client";
 
 const columns = {
   status: { placeholder: "진행단계", value: "" },
@@ -15,7 +13,7 @@ const columns = {
 };
 
 function Home(){
-  const initObject = Object.keys(columns).reduce((object, value, index) => {
+  const initObject = Object.keys(columns).reduce((object, value) => {
     object[value] = "";
     return object;
   }, {});
@@ -30,9 +28,7 @@ function Home(){
   const [saveValues,setSaveValues] = useState([]);
   const [count,setCount] =useState(2);
   const [values,setValues] = useState({...initObject});
-  const {
-    status, uname, area, year, date, progress,cname
-  } = values;
+  
   const onChange = (e)=>{
     const {name, value} = e.target;
      setValues ({
@@ -74,7 +70,7 @@ function Home(){
      <h1>PLANNING</h1>
       <tbody className={styles.body}>
         <tr>
-          <td rowSpan={count}>GOALS</td>
+          <td rowSpan={count} className = {styles.subTitle}>GOALS</td>
           <td className={styles.td}>Status</td>
           <td className={styles.td}>MemberName</td>
           <td className={styles.td}>ProjectName</td>
@@ -85,38 +81,42 @@ function Home(){
         </tr>
         {saveValues.map((item,idx)=>(
           <tr data-row-idx={idx} key={idx}>
-            <td>
-              <input name ="status" className={styles.td} value={item.status} onChange={onChange2} data-idx={idx}></input>
+            <td className={styles.td}>
+              <input name ="status" className={styles.mapinput} value={item.status} onChange={onChange2} data-idx={idx}></input>
             </td>
-            <td>
-              <input name ="uname" className={styles.td} value={item.uname} onChange={onChange2} data-idx={idx}></input>
+            <td className={styles.td}>
+              <input name ="uname" className={styles.mapinput} value={item.uname} onChange={onChange2} data-idx={idx}></input>
             </td>
-            <td>
-              <input name ="cname" className={styles.td} value={item.cname} onChange={onChange2} data-idx={idx}></input>
+            <td className={styles.td}>
+              <input name ="cname" className={styles.mapinput} value={item.cname} onChange={onChange2} data-idx={idx}></input>
             </td>
-            <td>
-              <input name ="area" className={styles.td} value={item.area} onChange={onChange2} data-idx={idx}></input>  
+            <td className={styles.td}>
+              <input name ="area" className={styles.mapinput} value={item.area} onChange={onChange2} data-idx={idx}></input>  
             </td>
-            <td>
-              <input name ="year" className={styles.td} value={item.year} onChange={onChange2} data-idx={idx}></input>  
+            <td className={styles.td}>
+              <input name ="year" className={styles.mapinput} value={item.year} onChange={onChange2} data-idx={idx}></input>  
             </td>
-            <td>
-              <input name ="date" className={styles.td} value={item.date} onChange={onChange2} data-idx={idx}></input>  
+            <td className={styles.td}>
+              <input name ="date" className={styles.mapinput} value={item.date} onChange={onChange2} data-idx={idx}></input>  
             </td>              
-            <td>
-              <input name ="progress" className={styles.td} value={item.progress} onChange={onChange2} data-idx={idx}></input>  
+            <td className={styles.td}>
+              <input name ="progress" className={styles.mapinput} value={item.progress} onChange={onChange2} data-idx={idx}></input>  
             </td>
+            <td>
               <button onClick={toggleDetail} data-idx={idx} item = {item} className={styles.but}>자세히</button>  
+            </td>
+            <td>
               <button className={styles.but} onClick={deleteRow}>제거</button>
+            </td>
           </tr>
         ))}
         <tr>
             {Object.keys(initObject).map((item) => {
               return (
-                <td>
+                <td className={styles.td}>
                   <input
                     placeholder={columns[item].placeholder}
-                    className={styles.td}
+                    className={styles.input}
                     name={item}
                     onChange={onChange}
                     value={values[item]}

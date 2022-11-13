@@ -3,16 +3,13 @@
 }
 
 .body{
-    width: 70vh
+    width: auto;
 }
 
-tbody>tr{
-    width: 100vh
-}
-tbody td,input{
+.td{
     overflow: hidden; 
     font-size: 14px; 
-    width:auto; padding:auto;
+    width:auto;
     border-right: 1px solid gray;
     border-width: 1px;
     border-style: solid;
@@ -22,10 +19,24 @@ tbody td,input{
 .th{
     border-width: 10px;
     padding: 10px; 
-    width: 100px;
+    width: auto;
+}
+.mapinput{
+    overflow: hidden; 
+    font-size: 10px; 
+    width:auto;
+    border-left-width:0;
+    border-right-width:0;
+    border-top-width:0;
+    border-bottom-width:1px;
+    text-align: center;
 }
 .input{
     font-size: 10px; 
+    width: auto;
+    text-align: center;
+    border:none;
+    padding: 10px; 
 }
 .but {
     background-color: white;
@@ -42,23 +53,25 @@ tbody td,input{
 }
 
 .show{
-    width: 376px;
+    width: 500px;
     height: 500px;
     position: absolute;
-    right: 400px;
+    right: 300px;
     transition: 1s;
+    overflow: hidden;
 }
 .hide{
-    width: 376px;
+    width: 500px;
     height: 500px;
     position: absolute;
-    right: -376px;
+    right: -500px;
     transition: 1s;
+    overflow: hidden;
 }
 
 .detail{
     background-color: white;
-    width: 100vh
+    width: 100vW
 }
 .butHide{
     background-color: white;
@@ -67,4 +80,11 @@ tbody td,input{
     text-align: center;
     text-decoration: none;
     font-size: 5px;
+}
+.subTitle{
+    overflow: hidden; 
+    font-size: 20px; 
+    width:100px;
+    text-align: center;
+    padding: 10px;
 }

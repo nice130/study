@@ -1,20 +1,23 @@
 import styles from'./styles.module.css';
 import { useState } from 'react';
-
+import Home from './Home'
+const columns = {
+    status: { placeholder: "진행단계", value: "" },
+    uname: { placeholder: "멤버이름", value: "" },
+    cname: { placeholder: "프로젝트이름", value: "" },
+    area: { placeholder: "목적", value: "" },
+    year: { placeholder: "년도", value: "" },
+    date: { placeholder: "기간", value: "" },
+    progress: { placeholder: "진행정도", value: "" },
+};
 function Detail(props){
+    const prop = props.props;
     const [saveValues,setSaveValues] = useState([]);
-    const [values,setValues] = useState({
-        status:'',
-        uname:'',
-        area:'',
-        year:'',
-        date:'',
-        progress:'',
-        cname:'',
-    });
-    const {
-        status, uname, area, year, date, progress,cname
-    } = values;
+    const initObject = Object.keys(columns).reduce((object, value) => {
+        object[value] = "";
+        return object;
+      }, {});
+    const [values,setValues] = useState({...initObject});
     const onChange = (e)=>{
         const {name, value} = e.target;
         setValues ({
@@ -38,21 +41,9 @@ function Detail(props){
         })
         setSaveValues([...saveValues],[saveValues]);
       }; 
-    const prop = props.props;
-    const name = prop.constructor.name;
-    
     const onClick = () =>{
         setSaveValues(currentArray =>[...currentArray,values]);
-        setValues({
-          status:'',
-          uname:'',
-          area:'',
-          year:'',
-          date:'',
-          progress:'',
-          uname:'',
-          cname:''
-        })
+        setValues({...initObject})
       };
     return (
         <div className={styles.detail}>
@@ -75,24 +66,30 @@ function Detail(props){
             </tr>
                 {saveValues.map((item,idx)=>(
                     <tr data-row-idx={idx}>
-                        <input name ="status" className={styles.td} value={item.status} onChange={onChange2} data-idx={idx}></input>
-                        <input name ="uname" className={styles.td} value={item.uname} onChange={onChange2} data-idx={idx}></input>
-                        <input name ="cname" className={styles.td} value={item.cname} onChange={onChange2} data-idx={idx}></input>
-                        <input name ="area" className={styles.td} value={item.area} onChange={onChange2} data-idx={idx}></input>  
-                        <input name ="year" className={styles.td} value={item.year} onChange={onChange2} data-idx={idx}></input>  
-                        <input name ="date" className={styles.td} value={item.date} onChange={onChange2} data-idx={idx}></input>  
-                        <input name ="progress" className={styles.td} value={item.progress} onChange={onChange2} data-idx={idx}></input>  
+                        <input name ="status" className={styles.mapinput} value={item.status} onChange={onChange2} data-idx={idx}></input>
+                        <input name ="uname" className={styles.mapinput} value={item.uname} onChange={onChange2} data-idx={idx}></input>
+                        <input name ="cname" className={styles.mapinput} value={item.cname} onChange={onChange2} data-idx={idx}></input>
+                        <input name ="area" className={styles.mapinput} value={item.area} onChange={onChange2} data-idx={idx}></input>  
+                        <input name ="year" className={styles.mapinput} value={item.year} onChange={onChange2} data-idx={idx}></input>  
+                        <input name ="date" className={styles.mapinput} value={item.date} onChange={onChange2} data-idx={idx}></input>  
+                        <input name ="progress" className={styles.mapinput} value={item.progress} onChange={onChange2} data-idx={idx}></input>  
                         <button className={styles.but} onClick={deleteRow}>제거</button>
                     </tr>
                 ))}
             <tr>
-                <input placeholder="진행단계" className={styles.td} name ="status" onChange={onChange} value={status} type='text'/>
-                <input placeholder="멤버이름" className={styles.td} name = "uname" onChange={onChange} value={uname} type='text'/>
-                <input placeholder="임무명" className={styles.td} name = "cname" onChange={onChange} value={cname} type='text'/>
-                <input placeholder="목적" className={styles.td} name = "area" onChange={onChange} value={area} type='text'/>
-                <input placeholder="년도"  className={styles.td} name = "year" onChange={onChange} value={year} type='text'/>
-                <input placeholder="기간"  className={styles.td} name = "date" onChange={onChange} value={date} type='text'/>
-                <input placeholder="진행정도"  className={styles.td} name = "progress" onChange={onChange} value={progress} type='text'/>
+                {Object.keys(initObject).map((item) => {
+                    return (
+                        <td className={styles.td}>
+                            <input
+                                placeholder={columns[item].placeholder}
+                                className={styles.input}
+                                name={item}
+                                onChange={onChange}
+                                value={values[item]}
+                            />
+                        </td>
+                    );
+                })}
                 <button className ={styles.but}onClick={onClick}>목표추가</button>
             </tr>
         </div>

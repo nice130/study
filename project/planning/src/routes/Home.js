@@ -61,8 +61,9 @@ function Home() {
 
   return (
     <div className={styles.main}>
-      {/* <img src={require("../img/fire.png")} /> */}
       <h1>PLANNING</h1>
+      {/* <img src={require("../img/fire.png")} /> */}
+      
       <div className={styles.container}>
         <div className={styles.area}>GOALS</div>
         <div className={styles.area}>
@@ -77,19 +78,20 @@ function Home() {
               {saveValues.map((item, idx) => (
                 <tr data-row-idx={idx}>
                   {Object.keys(columns).map((key) => (
-                    <td>
+                    <td className={key ==='ProjectName' ? styles.detailTd : styles.td}>
                       <input
                         name={key}
-                        className={styles.td}
                         value={item[key]}
                         onChange={onEdit}
                         data-idx={idx}
                       />
+                      {key === 'ProjectName' ? <button onClick={toggleOn} className={styles.detailBtn}>▶️</button> : null}
                     </td>
                   ))}
 
                   <td>
-                    <button onClick={toggleOn} className={styles.btn}>MORE
+                  
+                    
                       {/* <Link 
                       to={`/detail/${idx}`} 
                       state={{ test: "hello" }}>
@@ -103,7 +105,6 @@ function Home() {
                       >
                         MORE
                       </Link> */}
-                    </button>
                     <button className={styles.btn} onClick={deleteRow}>
                       X
                     </button>

@@ -1,20 +1,24 @@
 .body {
-    width: 90vh
+    width: 100vh
 }
 
+table {
+    table-layout: fixed;
+}
 
-
-table > tr, th {
-    border: 1px solid black;
+table>tr,
+th {
+    border: 1px solid gray;
     min-height: 100px;
 }
 
 .main {
     margin: 0 auto;
+    padding: 20px;
 }
 
 .main .container {
-    display: block;
+    display: flex;
     margin: 0 -5px;
 }
 
@@ -27,11 +31,14 @@ table > tr, th {
 }
 
 .area:first-child {
-    width: 30%;
+    width: 20%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .area:last-child {
-    width: 70%;
+    /* width: 80%; */
 }
 
 /* .td {
@@ -58,23 +65,57 @@ table > tr, th {
     text-align: center;
 }
 
-.btn {
-    background-color: rgb(238, 238, 238);
-    color: tomato;
-    padding: 2px;
-    text-align: center;
-    text-decoration: none;
-    width: 100px;
-}
-.btn:hover {
-    background-color: #6aafe6;
-    color: #d4dfe6;
-}
-
 .show {
-    display: block;
+        background:#181818;
+        color:#FFF;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        height: 300px;
+        padding: 20px;
+        transition: all 0.2s linear;
+        overflow: hidden;
+        box-sizing: border-box;
+          
 }
 
 .hide {
-   display: none;
+    
+}
+
+
+.btn {
+    position: relative;
+    cursor: pointer;
+    background: #26ae90;
+    width: 100px;
+    border: none;
+    border-radius: 3px;
+    color: #FFF;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.detailBtn {
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    border-radius: 3px;
+    color: #FFF;
+    visibility: hidden;
+    font-size: 12px;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    margin: 3px -25px;
+    transition: all 300ms ease;
+
+}
+
+.detailTd:hover > .detailBtn{
+    visibility: visible;
+    background: black;
 }

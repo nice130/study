@@ -64,7 +64,7 @@ function Home(){
   return (
     <div className={styles.main}>
       <td id="toggle" className={isDetail ? styles.show : styles.hide}>
-        <Detail props={val} />
+        <Detail props={val} isDetail={setIsDetail} />
       </td>
      <img src={require('../img/fire.png')}/>
      <h1>PLANNING</h1>

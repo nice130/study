@@ -43,7 +43,7 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
                 }
               </button>
             
-            <div className={styles.content}>토글바</div>
+            <div className={styles.content}>PLAN LIST</div>
           </div>
         </div>
       );

@@ -67,71 +67,71 @@ function Home(){
     <div className={styles.main}>
       <Sidebar width={250} setMainSize={setMainSize} mainSize={mainSize}/>
       <div className={mainSize ? styles.smallmain : styles.bigmain }>
-      <td id="toggle" className={isDetail ? styles.show : styles.hide}>
-        <Detail props={val} isDetail={setIsDetail} />
-      </td>
-     <img src={require('../img/fire.png')} alt='fire'/>
-     <h1>PLANNING</h1>
-      <tbody className={styles.body}>
-        <tr>
-          <td rowSpan={count} className = {styles.subTitle}>GOALS</td>
-          <td className={styles.td}>Status</td>
-          <td className={styles.td}>MemberName</td>
-          <td className={styles.td}>ProjectName</td>
-          <td className={styles.td}>Area</td>
-          <td className={styles.td}>Year</td>
-          <td className={styles.td}>Date</td>
-          <td className={styles.td}>Progress</td>
-        </tr>
-        {saveValues.map((item,idx)=>(
-          <tr data-row-idx={idx} key={idx}>
-            <td className={styles.td}>
-              <input name ="status" className={styles.mapinput} value={item.status} onChange={onChange2} data-idx={idx}></input>
-            </td>
-            <td className={styles.td}>
-              <input name ="uname" className={styles.mapinput} value={item.uname} onChange={onChange2} data-idx={idx}></input>
-            </td>
-            <td className={styles.td}>
-              <input name ="cname" className={styles.mapinput} value={item.cname} onChange={onChange2} data-idx={idx}></input>
-            </td>
-            <td className={styles.td}>
-              <input name ="area" className={styles.mapinput} value={item.area} onChange={onChange2} data-idx={idx}></input>  
-            </td>
-            <td className={styles.td}>
-              <input name ="year" className={styles.mapinput} value={item.year} onChange={onChange2} data-idx={idx}></input>  
-            </td>
-            <td className={styles.td}>
-              <input name ="date" className={styles.mapinput} value={item.date} onChange={onChange2} data-idx={idx}></input>  
-            </td>              
-            <td className={styles.td}>
-              <input name ="progress" className={styles.mapinput} value={item.progress} onChange={onChange2} data-idx={idx}></input>  
-            </td>
-            <td>
-              <button onClick={toggleDetail} data-idx={idx} item = {item} className={styles.but}>자세히</button>  
-            </td>
-            <td>
-              <button className={styles.but} onClick={deleteRow}>제거</button>
-            </td>
+        <td id="toggle" className={isDetail ? styles.show : styles.hide}>
+          <Detail props={val} isDetail={setIsDetail} />
+        </td>
+      <img src={require('../img/fire.png')} alt='fire'/>
+      <h1>PLANNING</h1>
+        <tbody className={styles.body}>
+          <tr>
+            <td rowSpan={count} className = {styles.subTitle}>GOALS</td>
+            <td className={styles.td}>Status</td>
+            <td className={styles.td}>MemberName</td>
+            <td className={styles.td}>ProjectName</td>
+            <td className={styles.td}>Area</td>
+            <td className={styles.td}>Year</td>
+            <td className={styles.td}>Date</td>
+            <td className={styles.td}>Progress</td>
           </tr>
-        ))}
-        <tr>
-            {Object.keys(initObject).map((item) => {
-              return (
-                <td className={styles.td}>
-                  <input
-                    placeholder={columns[item].placeholder}
-                    className={styles.input}
-                    name={item}
-                    onChange={onChange}
-                    value={values[item]}
-                    type="text"
-                  />
-                </td>
-              );
-            })}
-          <button className ={styles.but}onClick={onClick}>입력</button>
-        </tr> 
-        </tbody>
+          {saveValues.map((item,idx)=>(
+            <tr data-row-idx={idx} key={idx}>
+              <td className={styles.td}>
+                <input name ="status" className={styles.mapinput} value={item.status} onChange={onChange2} data-idx={idx}></input>
+              </td>
+              <td className={styles.td}>
+                <input name ="uname" className={styles.mapinput} value={item.uname} onChange={onChange2} data-idx={idx}></input>
+              </td>
+              <td className={styles.td}>
+                <input name ="cname" className={styles.mapinput} value={item.cname} onChange={onChange2} data-idx={idx}></input>
+              </td>
+              <td className={styles.td}>
+                <input name ="area" className={styles.mapinput} value={item.area} onChange={onChange2} data-idx={idx}></input>  
+              </td>
+              <td className={styles.td}>
+                <input name ="year" className={styles.mapinput} value={item.year} onChange={onChange2} data-idx={idx}></input>  
+              </td>
+              <td className={styles.td}>
+                <input name ="date" className={styles.mapinput} value={item.date} onChange={onChange2} data-idx={idx}></input>  
+              </td>              
+              <td className={styles.td}>
+                <input name ="progress" className={styles.mapinput} value={item.progress} onChange={onChange2} data-idx={idx}></input>  
+              </td>
+              <td>
+                <button onClick={toggleDetail} data-idx={idx} item = {item} className={styles.but}>자세히</button>  
+              </td>
+              <td>
+                <button className={styles.but} onClick={deleteRow}>제거</button>
+              </td>
+            </tr>
+          ))}
+          <tr>
+              {Object.keys(initObject).map((item) => {
+                return (
+                  <td className={styles.td}>
+                    <input
+                      placeholder={columns[item].placeholder}
+                      className={styles.input}
+                      name={item}
+                      onChange={onChange}
+                      value={values[item]}
+                      type="text"
+                    />
+                  </td>
+                );
+              })}
+            <button className ={styles.but}onClick={onClick}>입력</button>
+          </tr> 
+          </tbody>
         </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from'./styles.module.css';
 import Detail from './Detail';
+import Sidebar from './SideBar';
 
 const columns = {
   status: { placeholder: "진행단계", value: "" },
@@ -18,6 +19,7 @@ function Home(){
     return object;
   }, {});
   const [val,setVal] =useState({});
+  const [mainSize,setMainSize] = useState();
   const [isDetail,setIsDetail] = useState(false);
   const toggleDetail = (e) =>{
     const idx = e.target.dataset.idx;
@@ -63,10 +65,12 @@ function Home(){
 
   return (
     <div className={styles.main}>
+      <Sidebar width={250} setMainSize={setMainSize} mainSize={mainSize}/>
+      <div className={mainSize ? styles.smallmain : styles.bigmain }>
       <td id="toggle" className={isDetail ? styles.show : styles.hide}>
         <Detail props={val} isDetail={setIsDetail} />
       </td>
-     <img src={require('../img/fire.png')}/>
+     <img src={require('../img/fire.png')} alt='fire'/>
      <h1>PLANNING</h1>
       <tbody className={styles.body}>
         <tr>
@@ -128,7 +132,7 @@ function Home(){
           <button className ={styles.but}onClick={onClick}>입력</button>
         </tr> 
         </tbody>
-        
+        </div>
     </div>
   );
 }

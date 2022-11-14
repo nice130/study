@@ -1,6 +1,6 @@
 import styles from'./styles.module.css';
 import { useState } from 'react';
-import Home from './Home'
+
 const columns = {
     status: { placeholder: "진행단계", value: "" },
     uname: { placeholder: "멤버이름", value: "" },
@@ -50,7 +50,8 @@ function Detail(props){
       };
     return (
         <div className={styles.detail}>
-            <button className={styles.butHide} onClick={()=>{onClose(false)}}>X</button><h1><img src={require('../img/fire.png')}/>{prop.cname}</h1>
+            <button className={styles.butHide} onClick={()=>{onClose(false)}}>X</button>
+            <h1><img src={require('../img/fire.png')} alt='fire'/>{prop.cname}</h1>
             <li>Area : {prop.area}</li>
             <li>Date : {prop.date}</li>
             <li>progress : {prop.progress}</li>

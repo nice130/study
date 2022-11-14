@@ -1,8 +1,8 @@
 .main{
     overflow: auto;
-    width: 100vw;
     height: 100vh;
-    position: fixed;
+	width:100%;
+	height:auto;
 }
 .main::-webkit-scrollbar { 
     display: grid;
@@ -18,9 +18,17 @@
   border-radius: 10px;
   box-shadow: inset 0px 0px 5px skyblue;
 }
-
-.body{
-    width: auto;
+.bigmain{
+    left : 5px;
+    height: 100vh;
+    transition: 0.5s ease;
+    position: absolute;
+}
+.smallmain{
+    left : 260px;
+    height: 100vh;
+    transition: 0.5s ease;
+    position: absolute;
 }
 
 .td{
@@ -75,19 +83,23 @@
     height: 100vh;
     position: absolute;
     right: 0vh;
-    transition: 1s;
+    transition: 0.5s;
     overflow: hidden;
 }
 .hide{
-    width: 600px;
-    height: 500px;
+    width: 0px;
+    height: 0px;
     position: absolute;
-    right: -700px;
-    transition: 1s;
+    right: 0;
+    transition: 0.5s;
     overflow: hidden;
 }
 .dtd{
     width: auto;
+    border-right: 1px gray;
+    border-style: solid;
+    text-align: center;
+    border-width: 1px;
 }
 .detail{
     background-color: white;

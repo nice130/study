@@ -1,6 +1,6 @@
 .main{
     overflow: auto;
-    height: 100vh;
+    height: 100%;
 	width:100%;
 	height:auto;
 }
@@ -20,13 +20,15 @@
 }
 .bigmain{
     left : 5px;
-    height: 100vh;
+    height: 100%;
+	width:100%;
     transition: 0.5s ease;
     position: absolute;
 }
 .smallmain{
     left : 260px;
-    height: 100vh;
+    height: 100%;
+	width:100%;
     transition: 0.5s ease;
     position: absolute;
 }

@@ -1,8 +1,8 @@
 import React, {useRef, useState} from "react";
-import styles from "./sidebar.module.css"
-import Modal from 'react-modal';
+import styles from "./sidebar.module.css";
+import NewNote from "./NewNote";
 const SideBar = ({width=250, setMainSize,mainSize})=>{
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
     const [isOpen, setOpen] = useState(false);
     const [xPosition, setX] = useState(width);
     const side = useRef();
@@ -34,7 +34,9 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
     //         window.removeEventListener('click',handlClose);
     //     };
     // })
-    
+    const showModal=()=>{
+        setModalOpen(true); 
+    }
 
     return (
         <div className={styles.container}>
@@ -47,11 +49,9 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
               </button>
             
             <div className={styles.content}>PLAN LIST
-                <button className={styles.plus} onClick={()=> setModalIsOpen(true)}>+</button>
+                <button className={styles.plus} onClick={showModal}>+</button>
                 <div className={styles.modal}>
-                    <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                        <input></input>
-                    </Modal>
+                    {modalOpen && <NewNote setModalOpen={setModalOpen} />}
                 </div>
             </div>
           </div>

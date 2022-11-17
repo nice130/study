@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import { useParams, Link } from "react-router-dom";
 import styles from "./sidebar.module.css";
 import NewNote from "./NewNote";
 const SideBar = ({width=250, setMainSize,mainSize})=>{
@@ -6,6 +7,7 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
     const [isOpen, setOpen] = useState(false);
     const [xPosition, setX] = useState(width);
     const side = useRef();
+    const [plan,setPlan] = useState([]);
 
     const toggleMenu = () =>{
         setMainSize(mainSize ? false : true);
@@ -51,8 +53,20 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
             <div className={styles.content}>PLAN LIST
                 <button className={styles.plus} onClick={showModal}>+</button>
                 <div className={styles.modal}>
-                    {modalOpen && <NewNote setModalOpen={setModalOpen} />}
+                    {modalOpen && <NewNote setModalOpen={setModalOpen} setPlan={setPlan} />}
                 </div>
+                <ul>이거슨 새로운 플랜
+                    <li>1번</li>
+                    <li>2번</li>
+                </ul>
+                <ul>기본플랜
+                    <Link to={`/planning`}><li>planning</li></Link>
+                    <Link to={`/planning`}><li>planning</li></Link>
+                    <Link to={`/planning`}><li>planning</li></Link>
+                    {plan.map((item,idx)=>(
+                        <Link><li></li></Link>
+                    ))}
+                </ul>
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@ import styles from "./sidebar.module.css";
 import mainStyles from "./styles.module.css";
 import { useEffect, useRef } from 'react';
 
-function NewNote({setModalOpen}){
+function NewNote({setModalOpen,setPlan}){
     const closeModal= ()=>{
         setModalOpen(false);
     };
@@ -21,6 +21,10 @@ function NewNote({setModalOpen}){
         };
     });
 
+    const onChange =(e)=>{
+        setPlan=e.target.value;
+        console.log(setPlan);
+    }
     
     return(
         <div ref={modalRef} className={styles.modalparent}>
@@ -29,7 +33,7 @@ function NewNote({setModalOpen}){
             </button>
             <h2>New Plan</h2>
             <li>플랜명</li>
-            <input className={styles.input}></input>
+            <input className={styles.input} onChange={onChange}></input>
             <li></li>
         </div>
     )

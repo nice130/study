@@ -8,6 +8,7 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
     const [xPosition, setX] = useState(width);
     const side = useRef();
     const [plan,setPlan] = useState([]);
+    const [savePlan,setSavePlan] = useState([]);
 
     const toggleMenu = () =>{
         setMainSize(mainSize ? false : true);
@@ -16,7 +17,7 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
             setOpen(true);
         }else{
             setX(width);
-            setOpen(false);
+            setOpen(false); 
         }
     };
     const [sideColumns,setSideColumns] = useState([]);
@@ -39,6 +40,7 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
     const showModal=()=>{
         setModalOpen(true); 
     }
+    
 
     return (
         <div className={styles.container}>
@@ -53,18 +55,12 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
             <div className={styles.content}>PLAN LIST
                 <button className={styles.plus} onClick={showModal}>+</button>
                 <div className={styles.modal}>
-                    {modalOpen && <NewNote setModalOpen={setModalOpen} setPlan={setPlan} />}
+                    {modalOpen && <NewNote setModalOpen={setModalOpen} setPlan={setPlan} plan={plan} setSavePlan={setSavePlan} savePlan={savePlan}/>}
                 </div>
-                <ul>이거슨 새로운 플랜
-                    <li>1번</li>
-                    <li>2번</li>
-                </ul>
-                <ul>기본플랜
+                <ul>
                     <Link to={`/planning`}><li>planning</li></Link>
-                    <Link to={`/planning`}><li>planning</li></Link>
-                    <Link to={`/planning`}><li>planning</li></Link>
-                    {plan.map((item,idx)=>(
-                        <Link><li></li></Link>
+                    {savePlan.map((item,idx)=>(
+                        <Link to={`/planning`} key={idx} ><li value={item}>{item}</li></Link>
                     ))}
                 </ul>
             </div>

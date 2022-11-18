@@ -39,12 +39,12 @@
     width: 100%;
   }
   .modalparent{
-    width: 400px;
-    height: 800px;
+    width: 20vw;
+    height: 50vh;
     z-index: 999;
     position: absolute;
-    top: 30%;
-    left: 50%;
+    top:20vh;
+    left: 5vw;
     border: 1px solid rgb(204, 204, 204);
     background: rgb(255, 255, 255);
     transform: translate(140%, 0%);
@@ -53,6 +53,7 @@
     border-radius: 4px; 
     outline: none;
     padding: 20px;
+    color: black;
   }
   .plus{
     background-color: white;
@@ -93,4 +94,8 @@
     border-bottom-width:1px;
     padding: 7px;
     margin-left: 20px;
+    filter:none;
+  }
+  .li{
+    filter:none;
   }

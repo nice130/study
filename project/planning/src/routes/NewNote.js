@@ -1,8 +1,8 @@
 import styles from "./sidebar.module.css";
 import mainStyles from "./styles.module.css";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-function NewNote({setModalOpen,setPlan}){
+function NewNote({setModalOpen,setPlan,plan,savePlan,setSavePlan}){
     const closeModal= ()=>{
         setModalOpen(false);
     };
@@ -20,10 +20,26 @@ function NewNote({setModalOpen,setPlan}){
             document.removeEventListener('mousedown',handler);
         };
     });
-
+    const [isIdx,setIsIdx] = useState(0);
     const onChange =(e)=>{
-        setPlan=e.target.value;
-        console.log(setPlan);
+        const value = e.target.value;
+        
+        plan = value;
+        setPlan({
+            ...plan[isIdx],
+            value
+        });
+        setPlan([...plan],[plan]);
+        console.log(plan);
+    }
+
+    const save =()=>{
+        setIsIdx(isIdx+1);
+        console.log(isIdx);
+        setSavePlan(array=>[...array,plan]);
+        console.log(savePlan);
+        setPlan("");
+        
     }
     
     return(
@@ -31,10 +47,20 @@ function NewNote({setModalOpen,setPlan}){
             <button className={styles.but} onClick={closeModal}>
                 X
             </button>
+            <style jsx>
+                {`
+                    div{
+                        color: rgba(241, 221, 221, 0.37);
+                    }
+                    img,input{
+                        filter:blur(1px);
+                    }
+                `}
+            </style>
             <h2>New Plan</h2>
-            <li>플랜명</li>
-            <input className={styles.input} onChange={onChange}></input>
-            <li></li>
+            <li className={styles.li}>플랜명</li>
+            <input className={styles.input} onChange={onChange} value={plan}></input>
+            <button onClick={save}>저장</button>
         </div>
     )
 }

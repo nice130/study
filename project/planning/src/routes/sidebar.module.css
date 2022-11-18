@@ -1,0 +1,101 @@
+.container {
+    background-color: #E3ECF1;
+  }
+  .sidebar {
+    background-color:white;
+    border-right: 4px solid;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transition: 0.4s ease;
+    height: 100%;
+    z-index: 99;
+  }
+  .button {
+    position: relative;
+    left: 260px; 
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    z-index: 99;
+    transition: 0.4s ease;
+    border: 1px solid pink;
+    background-color: white;
+    color: rgba(241, 221, 221, 0.37);
+    border-radius: 40px;
+    overflow: hidden;
+  }
+  .button:hover{
+      color: #d4dfe6;
+  }
+  .openBtn {
+    width: 100%;
+    height: 100%;
+  }
+  .content {
+    padding: 40px 40px 0 20px;
+    position: relative;
+    width: 100%;
+  }
+  .modalparent{
+    width: 20vw;
+    height: 50vh;
+    z-index: 999;
+    position: absolute;
+    top:20vh;
+    left: 5vw;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    transform: translate(140%, 0%);
+    border-radius: 8px;
+    overflow: auto;
+    border-radius: 4px; 
+    outline: none;
+    padding: 20px;
+    color: black;
+  }
+  .plus{
+    background-color: white;
+    color: skyblue;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    width: 20px;
+    border-style:hidden;
+  }
+  .plus:hover {
+    color: #d4dfe6;
+  }
+  .but{
+    position: relative;
+    left: 95%;
+    background-color: white;
+    color: skyblue;
+    font-size: 15px;
+    width: 20px;
+    height: 5px;
+    border-style:hidden;
+    z-index: 99;
+    
+    right: 10px;
+  }
+  .but:hover {
+    color: #d4dfe6;
+  }
+  .input{
+    overflow: hidden; 
+    font-size: 12px; 
+    width:auto;
+    border-left-width:0;
+    border-right-width:0;
+    border-top-width:0;
+    border-bottom-width:1px;
+    padding: 7px;
+    margin-left: 20px;
+    filter:none;
+  }
+  .li{
+    filter:none;
+  }

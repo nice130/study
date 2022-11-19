@@ -7,7 +7,7 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
     const [isOpen, setOpen] = useState(false);
     const [xPosition, setX] = useState(width);
     const side = useRef();
-    const [plan,setPlan] = useState([]);
+    const [plan,setPlan] = useState("");
     const [savePlan,setSavePlan] = useState([]);
 
     const toggleMenu = () =>{
@@ -55,12 +55,20 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
             <div className={styles.content}>PLAN LIST
                 <button className={styles.plus} onClick={showModal}>+</button>
                 <div className={styles.modal}>
-                    {modalOpen && <NewNote setModalOpen={setModalOpen} setPlan={setPlan} plan={plan} setSavePlan={setSavePlan} savePlan={savePlan}/>}
+                    {modalOpen && 
+                    <NewNote 
+                    setModalOpen={setModalOpen} 
+                    setPlan={setPlan} 
+                    plan={plan} 
+                    setSavePlan={setSavePlan} 
+                    savePlan={savePlan}/>}
                 </div>
                 <ul>
-                    <Link to={`/planning`}><li>planning</li></Link>
+                    <Link to={`/planning`}>
+                        <li>planning</li></Link>
                     {savePlan.map((item,idx)=>(
-                        <Link to={`/planning`} key={idx} ><li value={item}>{item}</li></Link>
+                        <Link to={`/planning`} key={idx} >
+                            <li value={item}>{item}</li></Link>
                     ))}
                 </ul>
             </div>

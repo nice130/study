@@ -115,6 +115,7 @@ function Home(){
             </tr>
           ))}
           <tr>
+            {/* init 모듈화 하기 */}
               {Object.keys(initObject).map((item) => {
                 return (
                   <td className={styles.td}>

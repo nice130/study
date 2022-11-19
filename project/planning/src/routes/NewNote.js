@@ -3,6 +3,7 @@ import mainStyles from "./styles.module.css";
 import { useEffect, useRef, useState } from 'react';
 
 function NewNote({setModalOpen,setPlan,plan,savePlan,setSavePlan}){
+    console.log(plan);
     const closeModal= ()=>{
         setModalOpen(false);
     };
@@ -22,18 +23,12 @@ function NewNote({setModalOpen,setPlan,plan,savePlan,setSavePlan}){
     });
     const [isIdx,setIsIdx] = useState(0);
     const onChange =(e)=>{
-        const value = e.target.value;
-        
-        plan = value;
-        setPlan({
-            ...plan[isIdx],
-            value
-        });
-        setPlan([...plan],[plan]);
-        console.log(plan);
+        plan = e.target.value;
+        setPlan(plan);
     }
 
     const save =()=>{
+        console.log(plan);
         setIsIdx(isIdx+1);
         console.log(isIdx);
         setSavePlan(array=>[...array,plan]);
@@ -47,19 +42,12 @@ function NewNote({setModalOpen,setPlan,plan,savePlan,setSavePlan}){
             <button className={styles.but} onClick={closeModal}>
                 X
             </button>
-            <style jsx>
-                {`
-                    div{
-                        color: rgba(241, 221, 221, 0.37);
-                    }
-                    img,input{
-                        filter:blur(1px);
-                    }
-                `}
-            </style>
             <h2>New Plan</h2>
             <li className={styles.li}>플랜명</li>
-            <input className={styles.input} onChange={onChange} value={plan}></input>
+            <input 
+            className={styles.input} 
+            onChange={onChange}
+            value={plan}></input>
             <button onClick={save}>저장</button>
         </div>
     )

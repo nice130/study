@@ -2,7 +2,6 @@ import styles from "./sidebar.module.css";
 import { useEffect, useRef, useState } from 'react';
 
 function NewNote({setModalOpen,setPlan,plan,savePlan,setSavePlan}){
-    console.log(plan);
     const closeModal= ()=>{
         setModalOpen(false);
     };
@@ -27,11 +26,8 @@ function NewNote({setModalOpen,setPlan,plan,savePlan,setSavePlan}){
     }
 
     const save =()=>{
-        console.log(plan);
         setIsIdx(isIdx+1);
-        console.log(isIdx);
         setSavePlan(array=>[...array,plan]);
-        console.log(savePlan);
         setPlan("");
         
     }

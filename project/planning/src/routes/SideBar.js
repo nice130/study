@@ -20,7 +20,6 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
             setOpen(false); 
         }
     };
-    const [sideColumns,setSideColumns] = useState([]);
 //밖에클릭하면 창닫히는기능 사용시 useEffect 추가
     // const handlClose = async e =>{
     //     let sideArea = side.current;
@@ -69,7 +68,7 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
                         <li>planning</li>
                     </Link>
                     {savePlan.map((item,idx)=>(
-                        <Link to={`/planning`} key={idx} >
+                        <Link to={`/planning`} key={idx} title={item} >
                             <li value={item}>{item}</li></Link>
                     ))}
                     {plan}

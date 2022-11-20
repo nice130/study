@@ -30,7 +30,6 @@ function Home(){
                     {/* <textarea className={styles.home_input} value={menuIput}></textarea> */}
                 </div>
             </div>
-            
         </div>
         
     )

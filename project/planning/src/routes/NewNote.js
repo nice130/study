@@ -1,5 +1,4 @@
 import styles from "./sidebar.module.css";
-import mainStyles from "./styles.module.css";
 import { useEffect, useRef, useState } from 'react';
 
 function NewNote({setModalOpen,setPlan,plan,savePlan,setSavePlan}){

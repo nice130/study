@@ -1,7 +1,5 @@
 import {BrowserRouter as Router,Switch,Route,} from "react-router-dom";
-import AddPlanpop from "./routes/AddPlan";
-import Home from "./routes/Planning";
-import NewNote from "./routes/NewNote";
+import Home from "./routes/Home";
 import Planning from "./routes/Planning"
 function App() {
   return (

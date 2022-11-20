@@ -1,5 +1,5 @@
 import React, {useRef, useState} from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./sidebar.module.css";
 import NewNote from "./NewNote";
 const SideBar = ({width=250, setMainSize,mainSize})=>{
@@ -52,7 +52,8 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
                 }
               </button>
             
-            <div className={styles.content}>PLAN LIST
+            <div className={styles.content}>
+                <Link to={'/'}>PLAN LIST</Link>
                 <button className={styles.plus} onClick={showModal}>+</button>
                 <div className={styles.modal}>
                     {modalOpen && 
@@ -65,11 +66,13 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
                 </div>
                 <ul>
                     <Link to={`/planning`}>
-                        <li>planning</li></Link>
+                        <li>planning</li>
+                    </Link>
                     {savePlan.map((item,idx)=>(
                         <Link to={`/planning`} key={idx} >
                             <li value={item}>{item}</li></Link>
                     ))}
+                    {plan}
                 </ul>
             </div>
           </div>

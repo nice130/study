@@ -20,15 +20,17 @@
 }
 .bigmain{
     left : 5px;
-    height: 100%;
-	width:100%;
+    padding: 2%;
+    height: 90%;
+	width:90%;
     transition: 0.5s ease;
     position: absolute;
 }
 .smallmain{
+    padding: 2%;
     left : 260px;
-    height: 100%;
-	width:100%;
+    height: 70%;
+	width:70%;
     transition: 0.5s ease;
     position: absolute;
 }
@@ -112,7 +114,7 @@
     border-style: solid;
     overflow: auto;
     padding: 10px;
-    max-height: calc(100vh - 210px);
+    max-height: 90vh;
 }
 .detail::-webkit-scrollbar { 
     display: grid;
@@ -137,7 +139,6 @@
     font-size: 5px;
     width: 30px;
     border:none;
-    position: fixed;
 }
 .butHide:hover{
     background-color: #6aafe6;
@@ -151,6 +152,23 @@
     padding: 10px;
 }
 
-.li{
+.home_input{
+    margin: auto;
+    width: 20vw;
+    height: 40vh;
+    border-left-width:1px;
+    border-right-width:1px;
+    border-top-width:1px;
+    border-bottom-width:1px;
+    padding: 10px;
+    text-align:center;
+    float:left;
     
+}
+.home_div{
+    margin: auto;
+    width: 70%;
+    padding-top: 5vh;
+    padding-left: 26vw;
+    float:left;
 }

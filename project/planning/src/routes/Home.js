@@ -3,7 +3,7 @@ import {useState,useEffect} from 'react';
 import styles from './styles.module.css';
 
 function Home(){
-    const [mainSize,setMainSize] = useState();
+    const [mainSize,setMainSize] = useState(true);
     const [mainInput,setMianInput] = useState();
     // const [mainInput,setMianInput] = useState();
     

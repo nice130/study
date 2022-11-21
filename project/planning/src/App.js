@@ -1,7 +1,7 @@
 import {BrowserRouter as Router,Switch,Route,} from "react-router-dom";
 import Home from "./routes/Home";
 import NewPlan from "./routes/NewPlan";
-import Planning from "./routes/Planning"
+import Planning from "./routes/Planning";
 function App() {
   return (
     <Router>

@@ -4,8 +4,8 @@ import styles from "./sidebar.module.css";
 import NewNote from "./NewNote";
 const SideBar = ({width=250, setMainSize,mainSize})=>{
     const [modalOpen, setModalOpen] = useState(false);
-    const [isOpen, setOpen] = useState(false);
-    const [xPosition, setX] = useState(width);
+    const [isOpen, setOpen] = useState(true);
+    const [xPosition, setX] = useState(0);
     const side = useRef();
     const [plan,setPlan] = useState("");
     const [savePlan,setSavePlan] = useState([]);
@@ -79,4 +79,8 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
       );
 }
 
-export default SideBar;
+const comp = (prev, next) =>{
+    return prev.savePlan === next.savePlan
+}
+
+export default React.memo(SideBar, comp);

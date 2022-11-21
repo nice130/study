@@ -19,7 +19,7 @@ function Home(){
     return object;
   }, {});
   const [val,setVal] =useState({});
-  const [mainSize,setMainSize] = useState();
+  const [mainSize,setMainSize] = useState(true);
   const [isDetail,setIsDetail] = useState(false);
   const toggleDetail = (e) =>{
     const idx = e.target.dataset.idx;

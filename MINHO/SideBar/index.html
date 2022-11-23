@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sidebar Menu with sub-menu (Accordian)</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://kit.fontawesome.com/a6838890c1.js" crossorigin="anonymous"></script>
+  <!-- <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script> -->
+
+</head>
+
+<body>
+  <div class="side-btn">
+    <span class="fas fa-bars"></span>
+  </div>
+  <nav class="side-bar">
+    <div class="text">Side Menu</div>
+    <ul>
+      <li>
+        <a href="#">DashBoard</a>
+      </li>
+      <li>
+        <a href="#" class="serv-btn">Features
+          <span class="fas fa-caret-down"></span>
+        </a>
+        <ul class="serv-show">
+          <li><a href="#">Pages</a></li>
+          <li><a href="#">Elements</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#" class="serv-btn">Services
+          <span class="fas fa-caret-down"></span>
+        </a>
+        <ul class="serv-show">
+          <li><a href="#">App Design</a></li>
+          <li><a href="#">Web Design</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Overview</a></li>
+      <li><a href="#">Shortcuts</a></li>
+      <li><a href="#">Feedback</a></li>
+
+    </ul>
+    <div class="side-bottom">
+      <div class="bottom-content">
+
+        <span class="fa-solid fa-plus"></span>
+        <span>새로만들기</span>
+      </div>
+    </div>
+  </nav>
+
+</body>
+<script>
+  $('.side-btn').click(function (e) {
+    $(this).toggleClass('click');
+    $('.side-bar').toggleClass('show');
+  })
+  $('.serv-btn').click(function (e) {
+    $(e.target.nextElementSibling).toggleClass('show');
+    $(e.target.children).toggleClass('rotate');
+  })
+  $('nav ul li').click(function (e) {
+    console.log(this);
+    $(this).addClass('active').siblings().removeClass('active');
+  })
+</script>
+
+</html>

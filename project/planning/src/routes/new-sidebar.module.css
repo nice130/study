@@ -130,6 +130,15 @@ nav ul li span {
   transition: transform 0.4s;
 }
 
+.addList {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: transform 0.4s;
+}
+
 nav ul li span.rotate {
   transform: translateY(-50%) rotate(-180deg);
 }

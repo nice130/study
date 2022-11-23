@@ -6,7 +6,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/plan/:title">
+        <Route path="/plan">
           <NewPlan />
         </Route>
         <Route path="/planning">

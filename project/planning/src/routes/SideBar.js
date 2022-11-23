@@ -11,13 +11,14 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
     const [savePlan,setSavePlan] = useState([]);
 
     const toggleMenu = () =>{
-        setMainSize(mainSize ? false : true);
         if(xPosition>0){
             setX(0);
             setOpen(true);
+            setMainSize(true);
         }else{
             setX(width);
             setOpen(false); 
+            setMainSize(false);
         }
     };
 //밖에클릭하면 창닫히는기능 사용시 useEffect 추가
@@ -54,15 +55,7 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
             <div className={styles.content}>
                 <Link to={'/'}>PLAN LIST</Link>
                 <button className={styles.plus} onClick={showModal}>+</button>
-                <div className={styles.modal}>
-                    {modalOpen && 
-                    <NewNote 
-                    setModalOpen={setModalOpen} 
-                    setPlan={setPlan} 
-                    plan={plan} 
-                    setSavePlan={setSavePlan} 
-                    savePlan={savePlan}/>}
-                </div>
+                
                 <ul>
                     <Link to={`/planning`}>
                         <li>planning</li>
@@ -74,6 +67,15 @@ const SideBar = ({width=250, setMainSize,mainSize})=>{
                     {plan}
                 </ul>
             </div>
+            <div className={styles.modal}>
+                    {modalOpen && 
+                    <NewNote 
+                    setModalOpen={setModalOpen} 
+                    setPlan={setPlan} 
+                    plan={plan} 
+                    setSavePlan={setSavePlan} 
+                    savePlan={savePlan}/>}
+                </div>
           </div>
         </div>
       );

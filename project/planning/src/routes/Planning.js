@@ -133,6 +133,8 @@ function Home(){
             <button className ={styles.but}onClick={onClick}>입력</button>
           </tr> 
           </tbody>
+          <h1 style={{marginLeft:'500px'}}>Note</h1>
+          <textarea style={{margin: 'auto',width: '550px',marginTop:'10px',marginLeft:'250px',height:'150px',padding: '10px',textAlign:'center'}}></textarea>
         </div>
     </div>
   );

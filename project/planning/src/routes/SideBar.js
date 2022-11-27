@@ -45,14 +45,16 @@ const SideBar = ({ width = 250, setMainSize, mainSize }) => {
                 <Link to={`/planning`}>
                 <span className="fas fa-caret-down"></span>
                     Planning
-                <div className={styles.addList}>+</div>
+                <div className={styles.addList} onClick={showModal}>+</div>
                 </Link>
-            </li>          
+                
+            </li>         
           {savePlan.map((item, idx) => (
             <li value={item}>
                 <Link to={`/planning`} key={idx} title={item}>
                 <span className="fas fa-caret-down"></span>
                     {item}
+                    <div className={styles.addList} onClick={showModal}>+</div>
                 </Link>
             </li>
           ))}

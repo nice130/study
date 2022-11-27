@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import AppRouter from "./Router";
 import myBase, { authService } from '../myBase'
 function App() {
-  console.log(authService.currentUser);
   const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
   return (
     <>

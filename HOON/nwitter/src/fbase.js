@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-
+import {getFirestore } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: "AIzaSyDwUrIMffrrTuqaIrbFtEBJ94gIn3fgnCI",
     authDomain: "nwitter-e91b0.firebaseapp.com",
@@ -11,4 +11,7 @@ const firebaseConfig = {
   };
 
   const app = initializeApp(firebaseConfig);
+
+  export const firebaseInstance = getAuth;
   export const authService = getAuth();
+  export const dbService = getFirestore();

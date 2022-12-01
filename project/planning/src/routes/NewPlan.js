@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 import SideBar from './SideBar';
 import {useState} from 'react';
-function NewPlan(title){
+function NewPlan({title,savePlan,setSavePlan}){
     const [mainSize,setMainSize] = useState(true);
     console.log(title);
     return(

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styles from'./styles.module.css';
 import Detail from './Detail';
-import Sidebar from './SideBar';
 
 const columns = {
   status: { placeholder: "진행단계", value: "" },
@@ -65,7 +64,6 @@ function Home(){
 
   return (
     <div className={styles.main}>
-      <Sidebar width={250} setMainSize={setMainSize} mainSize={mainSize}/>
       <div className={mainSize ? styles.smallmain : styles.bigmain }>
         <td id="toggle" className={isDetail ? styles.show : styles.hide}>
           <Detail props={val} isDetail={setIsDetail} />

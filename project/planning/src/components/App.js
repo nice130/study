@@ -1,9 +1,9 @@
-import {BrowserRouter as Router,Switch,Route,} from "react-router-dom";
+import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom";
 import Home from "../routes/Home";
 import NewPlan from "../routes/NewPlan";
 import Planning from "../routes/Planning";
 import SideBar from "../routes/SideBar";
-function App() {
+function App({savePlan,setSavePlan}) {
   return (
     <Router>
       <SideBar />
@@ -18,6 +18,7 @@ function App() {
           <Home />
         </Route>
       </Switch>
+      <Redirect from="*" to="/" />
     </Router>
   )
 }

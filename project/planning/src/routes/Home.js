@@ -19,7 +19,6 @@ function Home(){
 
     return(
         <div>
-            <Sidebar width={250} setMainSize={setMainSize} mainSize={mainSize}/>
             <div className={mainSize ? styles.smallmain : styles.bigmain }>
                 <h1 style={{margin: 'auto',width: '70%',padding: '10px',textAlign:'center'}}>Team Planning Board</h1>
                 <div className={styles.home_div}>

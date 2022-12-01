@@ -3,6 +3,7 @@ import { addDoc, collection,getDocs,onSnapshot,query,orderBy } from "firebase/fi
 import React, { useEffect, useState } from "react";
 
 const Home=({userObj})=>{
+    console.log(userObj);
     const [nweet,setNweet] = useState("");
     const [nweets,setNweets] = useState([]);
     const getNweets = async () => {

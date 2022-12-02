@@ -46,6 +46,33 @@ nav ul li.active a{
   border-left-color: cyan;
 }
 
+nav ul li span {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    transition: transform 0.4s;
+}
+
+.rotate {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  /* transform: translateY(-50%); */
+  font-size: 22px;
+  transition: transform 0.4s;
+  transform: translateY(-50%) rotate(90deg);
+}
+/* .not_rotate {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: transform 0.4s;
+} */
+
 nav ul ul {
   position: static;
   display: none;

@@ -1,4 +1,3 @@
-import Sidebar from './SideBar';
 import {useState,useEffect} from 'react';
 import styles from './styles.module.css';
 

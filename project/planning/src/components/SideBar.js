@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 // import styles from "./sidebar.module.css";
 import styles from "./new-sidebar.module.css";
-import NewNote from "./NewNote";
+import NewNote from "../routes/NewNote";
 import ReactDOM from "react-dom/client";
 import commCss from "../styles.css";
+import SideItems from "./SideItems";
 
 const SideBar = ({ width = 250, setMainSize, mainSize }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -14,28 +15,14 @@ const SideBar = ({ width = 250, setMainSize, mainSize }) => {
   const side = useRef();
   const [savePlan, setSavePlan] = useState([]);
 
-  // $('.serv-btn').click(function (e) {
-  //   $(e.target.nextElementSibling).toggleClass('show');
-  //   $(e.target.children).toggleClass('rotate');
-  // })
-  // $('nav ul li').click(function (e) {
-  //   console.log(this);
-  //   $(this).addClass('active').siblings().removeClass('active');
-  // })
+ 
   const showModal = () => {
     setModalOpen(true);
   };
   const toggleSetting = () => {
     setToggled(!toggled);
   };
-  const clickArrow = (e) => {
-    e.target.classList.toggle("rotate");
-  };
-  const onAddChild = (e) => {
-    const { level } = e.target.dataset;
-    const $target = e.target.closest("li");
-
-  };
+ 
   useEffect(() => {
     // side.classList.add('hide');
   });
@@ -55,19 +42,7 @@ const SideBar = ({ width = 250, setMainSize, mainSize }) => {
         <div className={styles.side_bar__main}>
           <Link to={"/"}>PLAN LIST</Link>
         </div>
-        <ul>
-          {savePlan.map((item, idx) => (
-            <li value={item}>
-              <Link to={`/planning`} key={idx} title={item}>
-                <span className="fas fa-caret-right"></span>
-                {item}
-                <div className={styles.addList} onClick={showModal}>
-                  +
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <SideItems savePlan={savePlan} setSavePlan={setSavePlan} />
         <div className={styles.side_bottom}>
           <div className={styles.bottom_content}>
             <span className="fa-solid fa-plus"></span>

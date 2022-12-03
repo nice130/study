@@ -1,5 +1,5 @@
 import App from "./App";
-import SideBar from "../routes/SideBar";
+import SideBar from "./SideBar";
 import { useEffect, useState } from "react";
 function DefaultApp(){
     const [savePlan, setSavePlan] = useState([]);

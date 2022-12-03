@@ -2,7 +2,7 @@ import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom";
 import Home from "../routes/Home";
 import NewPlan from "../routes/NewPlan";
 import Planning from "../routes/Planning";
-import SideBar from "../routes/SideBar";
+import SideBar from "./SideBar";
 function App({savePlan,setSavePlan}) {
   return (
     <Router>

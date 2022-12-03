@@ -21,8 +21,10 @@ function NewNote({setModalOpen,setPlan,plan,savePlan,setSavePlan}){
     });
     const [isIdx,setIsIdx] = useState(0);
     const onChange =(e)=>{
-        plan = e.target.value;
-        setPlan(plan);
+        const {value} = e.target;
+        setPlan({
+            title : value,
+        });
     }
 
     const save =()=>{
@@ -42,7 +44,7 @@ function NewNote({setModalOpen,setPlan,plan,savePlan,setSavePlan}){
             <input 
             className={styles.input} 
             onChange={onChange}
-            value={plan}></input>
+            value={plan.title}></input>
             <button onClick={save}>저장</button>
         </div>
     )

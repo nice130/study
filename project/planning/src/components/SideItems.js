@@ -17,7 +17,7 @@ const SideItems = ({savePlan, setSavePlan}) => {
     const targetIdx = e.target.closest("li").dataset.index;
     savePlan[targetIdx].hasChild = true;
       savePlan[targetIdx].child = [{
-        title : "",
+        title : "TEST",
         hasChild : false,
     }]
     setSavePlan ({
@@ -27,22 +27,46 @@ const SideItems = ({savePlan, setSavePlan}) => {
   }
   const clickArrow = (e) => {
     e.target.classList.toggle("rotate");
-    e.target.closest('a').toggle('show');
+    e.target.nextElementSibling.toggle('show');
   };
   console.log(savePlan);
   return (
   <ul>
-    {savePlan.map((item, idx) => (
-      <li data-index={idx}>
-        <Link to={`/planning`} key={idx} title={item.title}>
-          <span className="fas fa-caret-right" onClick={clickArrow}></span>
+    {savePlan.map((item, pindex) => (
+      <>
+      <li data-index={pindex}>
+        <Link 
+        to={`/planning`} 
+        key={pindex} 
+        title={item.title}>
+          <span 
+          className="fas fa-caret-right" 
+          onClick={clickArrow}></span>
           {item.title}
-          <div className={styles.addList} onClick={onAddChild}>
-            +
-          </div>
-          {item.hasChild ? <div>Have ad child</div> : ""}
+          <div className={styles.addList} onClick={onAddChild}>+</div>
         </Link>
       </li>
+      {item.hasChild ? <ul className="serv-show show">
+    {item.child.map((item, idx) => (
+      <>
+      <li data-index={idx} data-p-index={pindex}>
+        <Link 
+        to={`/`} 
+        key={idx} 
+        title={item.title}>
+          {/* <span 
+          className="fas fa-caret-right" 
+          onClick={clickArrow}></span> */}
+          {item.title}
+          <div className={styles.addList} onClick={onAddChild}>+</div>
+        </Link>
+      </li>
+      </>
+    
+    ))}
+  </ul>  : ""}
+      </>
+    
     ))}
   </ul>)
 };

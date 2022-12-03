@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import {getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 const firebaseConfig = {
     apiKey: "AIzaSyDwUrIMffrrTuqaIrbFtEBJ94gIn3fgnCI",
     authDomain: "nwitter-e91b0.firebaseapp.com",
@@ -15,3 +16,4 @@ const firebaseConfig = {
   export const firebaseInstance = getAuth;
   export const authService = getAuth();
   export const dbService = getFirestore();
+  export const storageService = getStorage();

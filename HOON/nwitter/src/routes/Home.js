@@ -2,7 +2,7 @@ import Nweet from "components/Nweet";
 import { dbService, storageService } from "fbase";
 import {addDoc,collection,getDocs,onSnapshot,query,orderBy } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { ref, uploadString } from "@firebase/storage";
+import { ref, uploadString, getDownloadURL } from "@firebase/storage";
 import {v4} from "uuid";
 
 const Home=({userObj})=>{
@@ -34,15 +34,29 @@ const Home=({userObj})=>{
     },[]);
     const onSubmit = async (e) => {
         e.preventDefault();
-        const fileRef = ref(storageService, `${userObj.uid}/${v4()}`);
-        const response = await uploadString(fileRef, attachment, "data_url");
-        console.log(response);
-        // await addDoc(collection(dbService, "nweet"), {
-        // text: nweet,
-        // createdAt: Date.now(),
-        // creatorId : userObj.uid,
-        // });
-        // setNweet("");
+        let attachmentUrl = "";
+        if(attachment!==""){
+            const fileRef = ref(storageService, `${userObj.uid}/${v4()}`);
+            //storage 참조 경로로 파일 업로드 하기
+            const response = await uploadString(fileRef, attachment, "data_url");
+            //storage 참조 경로에 있는 파일의 URL을 다운로드해서 attachmentUrl 변수에 넣어서 업데이트
+            attachmentUrl = await getDownloadURL(response.ref);
+            console.log(attachmentUrl);
+        }
+        // const nweetObj = {
+        //     text: nweet,
+        //     createdAt: Date.now(),
+        //     creatorId: userObj.uid,
+        //     attachmentUrl,
+        // };
+        await addDoc(collection(dbService, "nweet"), {
+        text: nweet,
+        createdAt: Date.now(),
+        creatorId : userObj.uid,
+        attachmentUrl,
+        });
+        setAttachment("");
+        setNweet("");
     };
     const onChange = (e) =>{
         const {target:{value}} = e;
@@ -62,7 +76,7 @@ const Home=({userObj})=>{
         }
         reader.readAsDataURL(theFile);
     };
-    const onClearAttachment = () => setAttachment(null);
+    const onClearAttachment = () => setAttachment("");
     return (
         <>
         <form onSubmit={onSubmit}>

@@ -8,7 +8,7 @@ import Navigation from "./Navigation";
 const AppRouter = ({isLoggedIn, userObj})=>{
     return(
         <Router>
-            {isLoggedIn && <Navigation />}
+            {isLoggedIn && <Navigation userObj={userObj} />}
             <Switch>
                 {isLoggedIn ? 
                 (
@@ -17,14 +17,14 @@ const AppRouter = ({isLoggedIn, userObj})=>{
                             <Home userObj={userObj}/>
                         </Route>
                         <Route exact path="/profile">
-                            <Profile />
+                            <Profile userObj={userObj}/>
                         </Route>
                         {/* <Redirect from="*" to="/" />  */}
                     </>
                 ) : (
                     <>
                         <Route exact path="/">
-                            <Auth />
+                            <Auth userObj={userObj}/>
                         </Route>
                         {/* <Redirect from="*" to="/" />       페이지가 지정되지않는 다른 URL을가르킬때 루트로보냄*/}
                     </>

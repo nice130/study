@@ -41,7 +41,6 @@ const Home=({userObj})=>{
             const response = await uploadString(fileRef, attachment, "data_url");
             //storage 참조 경로에 있는 파일의 URL을 다운로드해서 attachmentUrl 변수에 넣어서 업데이트
             attachmentUrl = await getDownloadURL(response.ref);
-            console.log(attachmentUrl);
         }
         // const nweetObj = {
         //     text: nweet,

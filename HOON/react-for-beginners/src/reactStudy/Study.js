@@ -1,28 +1,24 @@
-import React, {useState} from "react";
-import ReactDOM from "react-dom";
+import React, {useEffect, useRef, useState} from "react";
+import ReactDOM from "react-dom"; 
 
-const content = [
-    {
-        tab:"section 1",
-        content:"Hi",
-    },
-    {
-        tab:"section 2",
-        content:"Hi2",
-    }
-];
-
- 
+const usePreventLeave = () => {
+  const listener = (e) =>{
+    e.preventDefault();
+    e.returnValue= ""; 
+  }
+  const enablePreve = () => window.addEventListener("beforeunload");
+  const disablePreve = () => 
+    window.addEventListener("beforeunload",listener);
+    return {enablePreve,disablePreve};
+}
 
 const Study=()=> {
-    const {currentItem,changeItem} = useTabs(0,content);
-    return (
-      <div className="App">
-        {content.map((section,index)=>(
-        <button onClick={()=>changeItem(index)}>{section.tab}</button>
-        ))}
-        <div>{currentItem.content}</div>
-      </div>
-    );
+  const {enablePreve,disablePreve} = usePreventLeave();
+  return (
+    <div className="App">
+      <button onClick={enablePreve}>Protect</button>
+      <button onClick={disablePreve}>Protect</button>
+    </div>
+  );
 }
 export default Study;

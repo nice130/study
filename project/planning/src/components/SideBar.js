@@ -42,7 +42,7 @@ const SideBar = ({ width = 250, setMainSize, mainSize }) => {
         <div className={styles.side_bar__main}>
           <Link to={"/"}>PLAN LIST</Link>
         </div>
-        <SideItems savePlan={savePlan} setSavePlan={setSavePlan} />
+        <SideItems savePlan={savePlan} setSavePlan={setSavePlan  } />
         <div className={styles.side_bottom}>
           <div className={styles.bottom_content}>
             <span className="fa-solid fa-plus"></span>

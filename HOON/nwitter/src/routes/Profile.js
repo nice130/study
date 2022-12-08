@@ -21,12 +21,6 @@ const Profile= ({userObj,refreshUser})=>{
             where("creatorId", "==", userObj.uid),
             orderBy("createdAt", "desc")
         );
-        
-        //3-2. getDocs()메서드로 쿼리 결과 값 가져오기
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-        console.log(doc.id, "=>", doc.data());
-        });
     };
     useEffect(() => {
         getMyNweets();

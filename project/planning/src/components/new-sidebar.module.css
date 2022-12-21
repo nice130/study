@@ -5,12 +5,12 @@ a {
   color: inherit;
 }
 .side_bar__main {
-color: white;
+color: black;
   font-size: 25px;
   font-weight: 600;
   line-height: 65px;
   text-align: center;
-  background: #1e1e1e;
+  background: #FBFBFA;
 }
 
 .side_btn {
@@ -63,7 +63,7 @@ color: white;
   position: fixed;
   width: 250px;
   height: 100%;
-  background: #1b1b1b;
+  background: #F1F1EF;
   left: 0px;
   transition: left 0.5s ease;
 }
@@ -73,7 +73,7 @@ color: white;
 .side_bar .text {
   margin: 30px;
   text-decoration: none;
-  color: white;
+  color: #F1F1EF;
   font-size: 25px;
   font-weight: 600;
   line-height: 65px;
@@ -107,7 +107,7 @@ color: white;
 
 
 .bottom_content span {
-  color: white;
+  color: black;
   font-weight: 500;
   font-size: 15px;
   margin-left: 10px

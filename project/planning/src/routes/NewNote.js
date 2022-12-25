@@ -31,7 +31,7 @@ function NewNote({setModalOpen,setPlan,plan,savePlan,setSavePlan}){
         setIsIdx(isIdx+1);
         setSavePlan(array=>[...array,plan]);
         setPlan("");
-        
+        setModalOpen(false);
     }
     
     return(

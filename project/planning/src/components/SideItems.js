@@ -4,14 +4,6 @@ import styles from "./new-sidebar.module.css";
 
 const SideItems = ({ savePlan, setSavePlan }) => {
   const [addChild, setAddChild] = useState(false);
-  // $('.serv-btn').click(function (e) {
-  //   $(e.target.nextElementSibling).toggleClass('show');
-  //   $(e.target.children).toggleClass('rotate');
-  // })
-  // $('nav ul li').click(function (e) {
-  //   console.log(this);
-  //   $(this).addClass('active').siblings().removeClass('active');
-  // })
   const [child, setChild] = useState("");
   const onAddChild = (e) => {
     const targetIdx = e.target.closest("li").dataset.index;
@@ -60,9 +52,9 @@ const SideItems = ({ savePlan, setSavePlan }) => {
           className="fas fa-caret-right" 
           onClick={clickArrow}></span> */}
                       {item.title}
-                      <div className={styles.addList} onClick={onAddChild}>
+                      {/* <div className={styles.addList} onClick={onAddChild}>
                         +
-                      </div>
+                      </div> */}
                     </Link>
                   </li>
                 </>

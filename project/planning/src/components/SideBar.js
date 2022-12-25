@@ -25,9 +25,6 @@ const SideBar = ({toggled, setToggled}) => {
     SetToggleSave(!toggleSave);
   };
  
-  useEffect(() => {
-    
-  },[]);
   const SideBarFixed = () => {
     setClicked(!clicked);
     setToggled(toggleSave);
@@ -48,7 +45,15 @@ const SideBar = ({toggled, setToggled}) => {
           <Link to={"/"}>PLAN LIST</Link>
         </div>
         <button onClick={SideBarFixed}>FIX</button>
-        <SideItems savePlan={savePlan} setSavePlan={setSavePlan} />
+        <ul>
+          <li data-index='100'>
+            <Link to={`/planning`} key='100' title='Planning'>
+              <span className="fas fa-caret-right"></span>
+                Planning
+            </Link>
+          </li>
+          <SideItems savePlan={savePlan} setSavePlan={setSavePlan} />
+        </ul>
         
         <div className={styles.side_bottom}>
           <div className={styles.bottom_content}>

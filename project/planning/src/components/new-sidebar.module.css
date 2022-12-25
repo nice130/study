@@ -86,7 +86,7 @@ color: black;
 .addList {
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 50px;
   transform: translateY(-50%);
   font-size: 22px;
   transition: transform 0.4s;

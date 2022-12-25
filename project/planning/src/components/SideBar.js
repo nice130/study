@@ -36,24 +36,22 @@ const SideBar = ({toggled, setToggled}) => {
       onMouseOver={toggleSetting}
       >
       </div>
+      
       <nav
         ref={side}
         onMouseLeave={toggleSetting}
         className={toggleSave ? styles.side_bar__show : styles.side_bar}
       >
+        
         <div className={styles.side_bar__main}>
-          <Link to={"/"}>PLAN LIST</Link>
+          <Link to={"/"}>PLAN LIST
+          </Link>
+          
+          <span 
+          style={clicked ? {color:'red'} : {color:'black'}}
+          className={clicked ? "fa-solid fa-thumbtack" : "fa-solid fa-thumbtack"} onClick={SideBarFixed}></span>
         </div>
-        <button onClick={SideBarFixed}>FIX</button>
-        <ul>
-          <li data-index='100'>
-            <Link to={`/planning`} key='100' title='Planning'>
-              <span className="fas fa-caret-right"></span>
-                Planning
-            </Link>
-          </li>
-          <SideItems savePlan={savePlan} setSavePlan={setSavePlan} />
-        </ul>
+        <SideItems savePlan={savePlan} setSavePlan={setSavePlan} />
         
         <div className={styles.side_bottom}>
           <div className={styles.bottom_content}>

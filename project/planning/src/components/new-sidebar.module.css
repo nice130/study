@@ -4,13 +4,26 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
 .side_bar__main {
-color: black;
+  position: relative;
+  color: black;
   font-size: 25px;
   font-weight: 600;
   line-height: 65px;
-  text-align: center;
+  padding-left: 20px;
   background: #FBFBFA;
+}
+
+.side_bar__main span {
+  color: black;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: transform 0.4s;
+  cursor: pointer;
 }
 
 .side_btn {
@@ -33,7 +46,7 @@ color: black;
   height: 100vh;
 }
 
-.side_btn.click{
+.side_btn.click {
   left: 260px;
 }
 
@@ -43,7 +56,7 @@ color: black;
   line-height: 45px;
 }
 
-.side_btn.click span:before{
+.side_btn.click span:before {
   content: '\f00d';
 }
 
@@ -59,7 +72,7 @@ color: black;
 
 .side_bar__show {
   visibility: visible;
-  left:0px;
+  left: 0px;
   position: fixed;
   width: 250px;
   height: 100%;
@@ -96,13 +109,13 @@ color: black;
 .side_bottom {
   position: fixed;
   bottom: 0;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
   display: flex;
   width: 250px;
   align-items: center;
   justify-content: flex-start;
   cursor: pointer;
-  padding:10px;
+  padding: 10px;
 }
 
 
@@ -112,5 +125,3 @@ color: black;
   font-size: 15px;
   margin-left: 10px
 }
-
-

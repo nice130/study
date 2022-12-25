@@ -7,15 +7,15 @@ import ReactDOM from "react-dom/client";
 import commCss from "../styles.css";
 import SideItems from "./SideItems";
 import Home from "../routes/Home";
-const SideBar = ({ width = 250, setMainSize, mainSize }) => {
+import App from "./App";
+const SideBar = ({toggled, setToggled}) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [toggled, setToggled] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [plan, setPlan] = useState("");
   const side = useRef();
   const [savePlan, setSavePlan] = useState([]);
-  
- 
+  const [toggleSave,SetToggleSave] = useState(false);
+
   const showModal = () => {
     setModalOpen(true);
   };
@@ -23,8 +23,11 @@ const SideBar = ({ width = 250, setMainSize, mainSize }) => {
     if (clicked) {
       return;
     }
-    setToggled(!toggled);
-    
+    console.log("toggleSave");
+    console.log(toggled);
+  
+    setToggled(!toggleSave);
+    SetToggleSave(!toggleSave);
   };
  
   useEffect(() => {
@@ -32,7 +35,7 @@ const SideBar = ({ width = 250, setMainSize, mainSize }) => {
   },[]);
   const SideBarFixed = () => {
     setClicked(!clicked);
-    
+    setToggled(toggleSave);
   }
   return (
     <div>
@@ -40,14 +43,11 @@ const SideBar = ({ width = 250, setMainSize, mainSize }) => {
       className={styles.side_toggle} 
       onMouseOver={toggleSetting}
       >
-        {/* <span 
-        className="fas fa-bars"
-        ></span> */}
       </div>
       <nav
         ref={side}
         onMouseLeave={toggleSetting}
-        className={toggled ? styles.side_bar__show : styles.side_bar}
+        className={toggleSave ? styles.side_bar__show : styles.side_bar}
       >
         <div className={styles.side_bar__main}>
           <Link to={"/"}>PLAN LIST</Link>

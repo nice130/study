@@ -1,9 +1,9 @@
 import {useState,useEffect} from 'react';
 import styles from './styles.module.css';
 import SideBar from '../components/SideBar';
-
-function Home({toggled}){
-    console.log(toggled);
+import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom";
+function Home({toggled, setToggled}){
+    console.log("홈"+toggled);
     const [mainSize,setMainSize] = useState(true);
     const [mainInput,setMianInput] = useState();
     // const [mainInput,setMianInput] = useState();
@@ -21,7 +21,7 @@ function Home({toggled}){
 
     return(
         <div>
-            <div className={mainSize ? styles.smallmain : styles.bigmain }>
+            <div className={toggled ? styles.smallmain : styles.bigmain }>
                 <h1 style={{margin: 'auto',width: '70%',padding: '10px',textAlign:'center'}}>Team Planning Board</h1>
                 <div className={styles.home_div}>
                     <textarea className={styles.home_input} onChange={onChange} value={mainInput}></textarea>

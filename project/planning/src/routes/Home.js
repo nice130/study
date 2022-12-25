@@ -1,12 +1,7 @@
 import {useState,useEffect} from 'react';
 import styles from './styles.module.css';
-import SideBar from '../components/SideBar';
-import {BrowserRouter as Router,Switch,Route,Redirect} from "react-router-dom";
 function Home({toggled, setToggled}){
-    console.log("홈"+toggled);
-    const [mainSize,setMainSize] = useState(true);
     const [mainInput,setMianInput] = useState();
-    // const [mainInput,setMianInput] = useState();
     
     const onChange =(e)=>{
         const value=e.target.value;
@@ -28,7 +23,6 @@ function Home({toggled, setToggled}){
                     <img style={{float:'left',width: '60%',height:'auto'}} src={require('../img/main.gif')} alt='main'/>
                 </div>
                 <div className={styles.home_div}>
-                    {/* <textarea className={styles.home_input} value={menuIput}></textarea> */}
                 </div>
             </div>
         </div>

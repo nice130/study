@@ -3,11 +3,8 @@ import { Link } from "react-router-dom";
 // import styles from "./sidebar.module.css";
 import styles from "./new-sidebar.module.css";
 import NewNote from "../routes/NewNote";
-import ReactDOM from "react-dom/client";
 import commCss from "../styles.css";
 import SideItems from "./SideItems";
-import Home from "../routes/Home";
-import App from "./App";
 const SideBar = ({toggled, setToggled}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [clicked, setClicked] = useState(false);
@@ -23,8 +20,6 @@ const SideBar = ({toggled, setToggled}) => {
     if (clicked) {
       return;
     }
-    console.log("toggleSave");
-    console.log(toggled);
   
     setToggled(!toggleSave);
     SetToggleSave(!toggleSave);

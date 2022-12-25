@@ -6,7 +6,7 @@ import NewNote from "../routes/NewNote";
 import ReactDOM from "react-dom/client";
 import commCss from "../styles.css";
 import SideItems from "./SideItems";
-
+import Home from "../routes/Home";
 const SideBar = ({ width = 250, setMainSize, mainSize }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [toggled, setToggled] = useState(false);
@@ -14,22 +14,32 @@ const SideBar = ({ width = 250, setMainSize, mainSize }) => {
   const [plan, setPlan] = useState("");
   const side = useRef();
   const [savePlan, setSavePlan] = useState([]);
-
+  
  
   const showModal = () => {
     setModalOpen(true);
   };
   const toggleSetting = () => {
+    if (clicked) {
+      return;
+    }
     setToggled(!toggled);
+    
   };
  
   useEffect(() => {
-    // side.classList.add('hide');
-  });
-  console.log(savePlan);
+    
+  },[]);
+  const SideBarFixed = () => {
+    setClicked(!clicked);
+    
+  }
   return (
     <div>
-      <div className={styles.side_toggle} onMouseOver={toggleSetting}>
+      <div 
+      className={styles.side_toggle} 
+      onMouseOver={toggleSetting}
+      >
         {/* <span 
         className="fas fa-bars"
         ></span> */}
@@ -42,7 +52,9 @@ const SideBar = ({ width = 250, setMainSize, mainSize }) => {
         <div className={styles.side_bar__main}>
           <Link to={"/"}>PLAN LIST</Link>
         </div>
-        <SideItems savePlan={savePlan} setSavePlan={setSavePlan  } />
+        <button onClick={SideBarFixed}>FIX</button>
+        <SideItems savePlan={savePlan} setSavePlan={setSavePlan} />
+        
         <div className={styles.side_bottom}>
           <div className={styles.bottom_content}>
             <span className="fa-solid fa-plus"></span>

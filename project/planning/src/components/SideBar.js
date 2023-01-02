@@ -51,6 +51,7 @@ const SideBar = ({toggled, setToggled}) => {
           style={clicked ? {color:'red'} : {color:'black'}}
           className={clicked ? "fa-solid fa-thumbtack" : "fa-solid fa-thumbtack"} onClick={SideBarFixed}></span>
         </div>
+        
         <SideItems savePlan={savePlan} setSavePlan={setSavePlan} />
         
         <div className={styles.side_bottom}>

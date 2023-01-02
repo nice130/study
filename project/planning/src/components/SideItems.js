@@ -31,6 +31,12 @@ const SideItems = ({ savePlan, setSavePlan }) => {
   };
   return (
     <ul>
+      <li data-index='100'>
+        <Link to={`/planning`} key='100' title='Planning'>
+          <span className="fas fa-caret-right"></span>
+            Planning
+        </Link>
+      </li>
       {savePlan.map((item, pindex) => (
         <>
           <li data-index={pindex}>
